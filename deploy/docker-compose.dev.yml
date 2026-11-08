@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: playtrail-dev-db
+    environment:
+      POSTGRES_USER: playtrail
+      POSTGRES_PASSWORD: playtrail
+      POSTGRES_DB: playtrail
+    ports:
+      - "55432:5432"
+    volumes:
+      - playtrail-dev-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U playtrail -d playtrail"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+volumes:
+  playtrail-dev-pgdata:

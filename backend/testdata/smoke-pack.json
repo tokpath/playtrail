@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "games": [
+    {
+      "name": "SMOKE Fake Rocket Jumper",
+      "slug": "smoke-fake-rocket-jumper",
+      "primaryCategory": "action",
+      "tags": ["casual", "physics"],
+      "externalURL": "https://www.crazygames.com/game/smoke-fake-rocket-jumper",
+      "sourceURL": "https://www.crazygames.com/game/smoke-fake-rocket-jumper",
+      "sourceFetchedAt": "2026-11-08T10:00:00+00:00",
+      "featured": true,
+      "editorialOrder": 10,
+      "linkStatus": "valid",
+      "deviceSupport": "desktop",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/smoke-fake-rocket-jumper",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "Fake Rocket Jumper",
+          "summary": "Smoke test data only: a pretend rocket jumper that never existed, written purely to exercise the publish pipeline end to end.",
+          "description": "Smoke test data only. This pretend game exists solely to verify the PlayTrail publishing pipeline: gates, revisions, and the public read model. It describes a fictional rocket-powered jumper across a procedurally generated skyline, with absolutely no real game behind it.",
+          "controls": "WASD: move\nSpace: jump\nMouse: aim"
+        },
+        "zh": {
+          "alias": "假火箭跳跃者",
+          "summary": "冒烟测试数据：一款并不存在的虚构火箭跳跃游戏，仅用于验证发布流程。",
+          "description": "冒烟测试数据。这款虚构游戏唯一存在的目的是验证 PlayTrail 的发布流程：发布门禁、修订版本与公开读模型。内容描述了一个跨越程序生成天际线的火箭跳跃角色，背后没有任何真实游戏。",
+          "controls": "WASD：移动\n空格：跳跃\n鼠标：瞄准"
+        }
+      }
+    },
+    {
+      "name": "SMOKE Placeholder Farm",
+      "slug": "smoke-placeholder-farm",
+      "primaryCategory": "sim",
+      "tags": ["idle", "casual"],
+      "externalURL": "https://www.crazygames.com/game/smoke-placeholder-farm",
+      "sourceURL": "https://www.crazygames.com/game/smoke-placeholder-farm",
+      "sourceFetchedAt": "2026-11-08T10:00:00+00:00",
+      "featured": false,
+      "editorialOrder": 20,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/smoke-placeholder-farm",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Smoke test data: an imaginary idle farm with a hundred fictional crops, used only to seed the local development database.",
+          "description": "Smoke test data only. This imaginary idle farming game exists to exercise category counts, related-game scoring, and the locale-level publish gates. Nothing about it corresponds to any real product.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "占位农场",
+          "summary": "冒烟测试数据：一座虚构的放置农场，用于填充本地开发数据库。",
+          "description": "冒烟测试数据。这款虚构的放置农场游戏用于验证分类计数、相关游戏评分与按语言的发布门禁，与任何真实产品无关。"
+        }
+      }
+    },
+    {
+      "name": "SMOKE Draft Only Racer",
+      "slug": "smoke-draft-only-racer",
+      "primaryCategory": "driving",
+      "tags": ["racing", "casual"],
+      "externalURL": "https://www.crazygames.com/game/smoke-draft-only-racer",
+      "sourceURL": "https://www.crazygames.com/game/smoke-draft-only-racer",
+      "sourceFetchedAt": "2026-11-08T10:00:00+00:00",
+      "publish": false,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Smoke test data: a fictional racer that stays a draft and must never appear on any public surface.",
+          "description": "Smoke test data only. This fictional racing game intentionally remains a draft so the E2E suite can assert that drafts never leak into public lists, sitemaps, or detail pages."
+        }
+      }
+    }
+  ]
+}

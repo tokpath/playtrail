@@ -1,0 +1,39 @@
+# Editors / OS
+.DS_Store
+*.swp
+
+# Go
+backend/bin/
+backend/data/
+
+# Env
+.env
+backend/.env
+deploy/.env
+
+# Production backups
+deploy/backups/
+
+# Node / Next.js
+web/node_modules/
+web/.next/
+web/out/
+web/.env*.local
+
+# Playwright
+e2e/report/
+e2e/test-results/
+e2e/playwright/.cache/
+
+# Logs
+*.log
+e2e/node_modules/
+e2e/report/
+e2e/test-results/
+e2e/.auth/
+e2e/.pids/
+e2e/bin/
+backend/bin/
+backend/data/media-e2e/
+web/.next-e2e-dist/
+backend/playtrail

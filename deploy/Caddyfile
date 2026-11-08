@@ -1,0 +1,20 @@
+{$SITE_ADDRESS} {
+	encode gzip zstd
+
+	# Internal Next.js revalidation endpoint: never reachable from outside.
+	handle /_internal/* {
+		respond 404
+	}
+
+	handle /api/* {
+		reverse_proxy api:8081
+	}
+
+	handle /media/* {
+		reverse_proxy api:8081
+	}
+
+	handle {
+		reverse_proxy web:3000
+	}
+}

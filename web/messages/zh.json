@@ -1,0 +1,197 @@
+{
+  "site": {
+    "name": "PlayTrail",
+    "zhName": "游引",
+    "description": "网页游戏的野外指南：人工精选、说明实在，一键前往 CrazyGames 开玩。",
+    "defaultShareAlt": "PlayTrail — 网页游戏野外指南"
+  },
+  "a11y": {
+    "skipToContent": "跳到正文",
+    "searchSubmit": "搜索",
+    "languageSwitcher": "切换语言",
+    "openFilters": "打开筛选",
+    "closeFilters": "关闭筛选",
+    "close": "关闭",
+    "clearFilter": "移除筛选条件 {label}",
+    "prevPage": "上一页",
+    "nextPage": "下一页",
+    "pageStatus": "第 {page} 页，共 {totalPages} 页",
+    "position": "第 {position} 位",
+    "coverFallback": "{name} 的生成封面"
+  },
+  "header": {
+    "searchPlaceholder": "搜索游戏…",
+    "allGames": "全部游戏",
+    "categoriesLabel": "类别"
+  },
+  "home": {
+    "eyebrow": "网页游戏野外指南",
+    "title": "发现下一款让你上头的游戏",
+    "subtitle": "人工精选的网页游戏，实在的说明，一键前往 CrazyGames 开玩。",
+    "searchPlaceholder": "搜索游戏…",
+    "statsGames": "{count} 款游戏",
+    "statsCategories": "{count} 个类别",
+    "statsUpdated": "更新于 {date}",
+    "todayTrail": "今日路线",
+    "viewDetail": "查看详情",
+    "hotSnapshot": "CrazyGames 热门快照",
+    "hotViewAll": "查看完整快照",
+    "browseByCategory": "按类别走",
+    "gamesCount": "{count} 款游戏"
+  },
+  "card": {
+    "linkUnavailable": "链接暂不可用"
+  },
+  "list": {
+    "title": "全部游戏",
+    "resultCount": "{count} 款游戏",
+    "filters": "筛选",
+    "category": "类别",
+    "tag": "标签",
+    "clearAll": "清除全部",
+    "clearFilters": "清除筛选",
+    "sort": "排序",
+    "sortEditorial": "编辑排序",
+    "sortNewest": "最近收录",
+    "searchPlaceholder": "搜索游戏…",
+    "activeFilters": "当前筛选",
+    "applyFilters": "应用筛选"
+  },
+  "hot": {
+    "title": "CrazyGames 热门快照",
+    "definition": "这里展示的是采集时刻 CrazyGames 热门页面的样子：过去 24 小时内热度上升的游戏。名次只是那一次页面的展示顺序，不代表累计玩家排行。",
+    "collected": "采集于 {time}",
+    "region": "采集地区 {region}",
+    "definitionShort": "过去 24 小时热度上升",
+    "staleBanner": "历史快照，已超过 48 小时未更新。",
+    "empty": {
+      "title": "暂时没有快照",
+      "body": "只有拿到最近的已审核快照时，我们才展示热门列表，不会编造名次。可以先去完整目录里逛逛。"
+    }
+  },
+  "detail": {
+    "breadcrumbHome": "首页",
+    "playCta": "在 CrazyGames 游玩",
+    "ctaDisabled": "外部链接暂不可用",
+    "ctaDisclosure": "将在新标签页打开外部平台；游戏内容、广告及可用性由该平台提供。",
+    "backToList": "返回全部游戏",
+    "related": "相关游戏",
+    "intro": "简介",
+    "controls": "操作",
+    "controlsPending": "操作信息待核实",
+    "screenshots": "截图",
+    "externalUnavailable": "这款游戏的外部链接当前不可用，因此按钮已停用。页面其余内容不受影响，你仍然可以阅读说明、浏览相关游戏。",
+    "deviceUnknown": "设备适配未确认",
+    "fields": {
+      "developer": "开发商",
+      "devices": "设备",
+      "deviceDesktop": "桌面",
+      "deviceMobile": "移动端",
+      "deviceBoth": "桌面和移动端",
+      "deviceUnknown": "未确认",
+      "sourceAndVerified": "来源与核实",
+      "verifiedOn": "{date} 已核实",
+      "unverified": "待核实",
+      "firstCollected": "首次收录",
+      "externalPlatform": "外部平台",
+      "category": "类别"
+    }
+  },
+  "empty": {
+    "noResultsTitle": "这条路上没有找到游戏",
+    "noResultsBody": "当前的筛选组合没有匹配到任何游戏。",
+    "clearFilters": "清除筛选",
+    "backHome": "回首页",
+    "browseAll": "浏览全部游戏",
+    "notFoundTitle": "路线到此为止",
+    "notFoundBody": "你要找的页面不存在，或者已经移动。",
+    "goneTitle": "这款游戏已从本站下架",
+    "goneBody": "它已从游引移除，这里不再提供内容与入口。",
+    "errorTitle": "列表加载失败",
+    "errorBody": "我们这边出了点问题。这里不会伪造数据——请重试。",
+    "retry": "重试"
+  },
+  "pagination": {
+    "label": "分页"
+  },
+  "footer": {
+    "tagline": "独立的网页游戏野外指南。",
+    "site": "站点",
+    "language": "语言",
+    "about": "关于",
+    "privacy": "隐私",
+    "copyright": "版权与纠错",
+    "disclaimer": "PlayTrail 是独立的精选导流站，与 CrazyGames 无官方合作。游戏内容、广告与可用性由 CrazyGames 提供。"
+  },
+  "meta": {
+    "home": {
+      "title": "游引 PlayTrail — 网页游戏野外指南",
+      "description": "网页游戏的野外指南：人工精选、来源可查、说明实在，一键前往 CrazyGames 开玩。"
+    },
+    "games": {
+      "title": "全部游戏 — 游引 PlayTrail"
+    },
+    "game": {
+      "title": "{name} — 游引 PlayTrail"
+    },
+    "category": {
+      "title": "{category}游戏 — 游引 PlayTrail",
+      "description": "游引精选的{category}游戏，附原创说明与核实过的来源。"
+    },
+    "hot": {
+      "title": "CrazyGames 热门快照 — 游引 PlayTrail"
+    },
+    "about": {
+      "title": "关于 — 游引 PlayTrail"
+    },
+    "privacy": {
+      "title": "隐私 — 游引 PlayTrail"
+    },
+    "copyright": {
+      "title": "版权与纠错 — 游引 PlayTrail"
+    }
+  },
+  "about": {
+    "eyebrow": "关于本指南",
+    "title": "一本野外指南，不是又一个霓虹游戏厅",
+    "p1": "PlayTrail 是一个独立的网页游戏精选导流站。我们像步道指南作者走山脉一样走一遍浏览器游戏目录：慢慢看、做笔记，然后把你带到真正玩游戏的地方。游戏本身运行在外部平台（目前主要是 CrazyGames）上，从游戏页点一下即可前往。",
+    "h2How": "这本指南怎么写",
+    "p2": "每一条条目都由人工编辑撰写：原创的一句话说明、原创的简介，以及只写能核实的事实。控制方式、设备支持这些没有证据的信息，页面会直接说“待核实”，而不是靠猜。每个游戏页都标明来源和核实日期。",
+    "p3": "游戏按固定的主类别组织，另有自由的玩法标签。首页的编辑精选是编辑的选择；热门快照是带采集时间和地区的对外部榜单的一次快照，不是我们自己的排名。",
+    "h2Independence": "独立性",
+    "p4": "PlayTrail 与 CrazyGames 没有已确认的官方合作，也不是任何平台的官方站点。游戏内容、广告与可用性由外部平台提供。我们不托管游戏、不出售展示位、也不接受付费上榜。",
+    "h2Contact": "联系",
+    "p5": "勘误和反馈欢迎通过版权页列出的渠道告诉我们。",
+    "pending": "待需求方确认"
+  },
+  "privacy": {
+    "eyebrow": "隐私",
+    "title": "我们收集什么，不收集什么",
+    "p1": "PlayTrail 不需要账号、不使用 cookie、不做跨站跟踪。这一页说明仅有的几项统计，以及它们的保存期限。",
+    "h2Events": "产品事件",
+    "p2": "当你浏览游戏页或点击外部平台的链接时，本站可能记录三种事件之一：游戏页浏览、离站点击、相关游戏点击。每条事件包含：随机事件 id、事件类型、游戏、页面类型、页面路径、界面语言、时间戳，以及站内点击上下文（例如来自首页还是相关游戏卡片）。不包含账号、设备标识、IP 地址、完整 referrer 或搜索词。",
+    "p3": "这些计数只做聚合使用（例如每款游戏的点击率），并限期保存：原始事件 30 天后删除，按日聚合 90 天后删除。",
+    "h2Cookies": "Cookie 与本地存储",
+    "p4": "本站不为访客设置任何 cookie。为了知道你来自首页、类别页还是相关游戏，浏览器可能在当前标签页的 sessionStorage 中保存一个临时值，读取后立即删除。它不会被持久化，也不会被共享。",
+    "h2Respect": "Do Not Track 与 Global Privacy Control",
+    "p5": "如果浏览器发送了 DNT 或 GPC 信号，PlayTrail 会完全停止发送产品事件。页面展示和离站链接不受影响。",
+    "h2Logs": "服务器日志",
+    "p6": "托管基础设施会保留标准服务器日志（可能包含 IP 地址），仅用于安全和防滥用，最长保存 30 天，且不与产品事件关联。",
+    "h2Contact": "疑问",
+    "p7": "对本页内容有疑问，请使用版权页上的联系渠道。",
+    "pending": "待需求方确认"
+  },
+  "copyright": {
+    "eyebrow": "版权与纠错",
+    "title": "纠错、下架与权利",
+    "p1": "PlayTrail 收录运行在外部平台上的游戏。我们撰写自己的说明文字，为没有授权图片的游戏生成原创封面，绝不转载第三方的描述、截图或美术素材。",
+    "h2Corrections": "报告错误",
+    "p2": "如果某个游戏页上的信息有误——开发商、操作、设备支持或链接本身——请告诉我们，我们会核实后修正。失效链接也欢迎报告：外部页面消失的游戏会被标记为“链接暂不可用”，而不是悄悄删除。",
+    "h2Rights": "权利人",
+    "p3": "如果你是这里收录的游戏的权利人，希望修改或移除条目，或者认为本站的图片或文字侵犯了你的权利，请联系我们，并附上游戏名称、页面地址和问题描述。每一条请求我们都会回复。",
+    "h2Trademarks": "商标",
+    "p4": "游戏名称是其各自权利人的商标，此处仅用于标识。PlayTrail 与 CrazyGames 无关联；CrazyGames 是其各自权利人的商标。",
+    "pending": "待需求方确认",
+    "contactPending": "具体的联系渠道（邮箱或表单）由需求方提供，上线前会公布在这里。我们有意不放占位地址。"
+  }
+}

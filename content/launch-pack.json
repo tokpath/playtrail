@@ -1,0 +1,614 @@
+{
+  "schemaVersion": 1,
+  "games": [
+    {
+      "name": "Raftcraft",
+      "slug": "raftcraft",
+      "primaryCategory": "action",
+      "tags": ["survival", "building", "crafting", "multiplayer", "pvp", "3d"],
+      "externalUrl": "https://www.crazygames.com/game/raftcraft",
+      "sourceUrl": "https://www.crazygames.com/game/raftcraft",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "raftcraft_16x9/20261027132355/raftcraft_16x9-cover.png",
+      "featured": true,
+      "editorialOrder": 10,
+      "linkStatus": "valid",
+      "deviceSupport": "desktop",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/raftcraft",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Survive on a block-built raft in open water: hook floating supplies, grow your raft, fish and craft gear, or switch to 5v5 team deathmatch.",
+          "description": "Raftcraft is a blocky survival game set at sea. You start on a small raft, pull in debris drifting past, and turn it into a bigger floating base with tools, weapons and storage. Hunger and thirst keep ticking down, so fishing and fresh water matter as much as building.\n\nYou can stay in a personal survival world, or sign in with a CrazyGames account to join the online raft mode. A separate Team Deathmatch mode offers 5v5 matches, public games topped up with bots, and private rooms.\n\nThe game is designed for desktop play with a keyboard and mouse.",
+          "controls": "WASD: move\nMouse: look and aim\nSpace: jump / swim up\nShift: sprint\nLeft click: attack, mine, shoot or build\nRight click: use held item, throw the hook, aim, or open the build menu\nR: reload\n1–9: select hotbar slot\nTab: inventory\nEsc: pause\nC (while running): slide, Team Deathmatch\nQ / E: lean, Team Deathmatch"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "在海上的方块木筏求生：钩取漂来的物资、扩建木筏、钓鱼造装备，也可以打 5v5 团队死斗。",
+          "description": "Raftcraft 是一款方块风格的海上生存游戏。你从一块小木筏开始，钩取海面上漂来的材料，把它扩建成带工具、武器和储物的海上基地。饥饿和口渴会不断下降，所以钓鱼和找淡水跟建造一样重要。\n\n可以在自己的单人世界里生存，也可以登录 CrazyGames 账号进入在线木筏模式。另有独立的团队死斗模式：5v5 对战、用机器人补位的公开房间，以及私人房间。\n\n游戏为电脑键鼠操作设计。",
+          "controls": "WASD：移动\n鼠标：视角与瞄准\n空格：跳跃 / 上浮\nShift：冲刺\n左键：攻击、采集、射击或建造\n右键：使用手中物品、抛钩、瞄准或打开建造菜单\nR：换弹\n1–9：切换快捷栏\nTab：背包\nEsc：暂停\nC（奔跑中）：滑铲，团队死斗\nQ / E：侧身，团队死斗"
+        }
+      }
+    },
+    {
+      "name": "Mechacraft.io",
+      "slug": "mechacraft-io",
+      "primaryCategory": "io",
+      "tags": ["sandbox", "building", "physics", "multiplayer", "3d"],
+      "externalUrl": "https://www.crazygames.com/game/evergate-ivu",
+      "sourceUrl": "https://www.crazygames.com/game/evergate-ivu",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "evergate-ivu_16x9/20261010140221/evergate-ivu_16x9-cover.png",
+      "featured": true,
+      "editorialOrder": 20,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/evergate-ivu",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Snap together blocks, wheels, engines and logic gates to build vehicles and machines, then take them for a test drive in a physics sandbox.",
+          "description": "Mechacraft.io is a building sandbox about making things that move. You place blocks, wheels and engines to put together cars and contraptions, wire them up with logic gates, then climb in and drive to see whether the design actually works.\n\nThere is no fixed goal. The fun is in testing an idea, watching it fall apart, and trying again with a better one. The world is shared with other players, so you will see their creations rolling around too.\n\nA good pick if you enjoy tinkering more than racing.",
+          "controls": "WASD: move\nShift: sprint\nSpace: jump\nMouse: look around\nLeft click: place / interact\nRight click: remove\nE: enter seat / activate\nB: inventory\nT (hold): tool wheel\nR: rotate block\n1–9, 0: select hotbar slot"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "用方块、轮子、引擎和逻辑门搭出车辆和机器，再开进物理沙盒里试驾。",
+          "description": "Mechacraft.io 是一款关于“造会动的东西”的建造沙盒。你用方块、轮子和引擎拼出汽车或各种装置，用逻辑门把它们连起来，然后坐进去开一开，看设计到底行不行。\n\n游戏没有固定目标，乐趣在于试一个想法、看它散架、再改得更好。世界和其他玩家共享，你也会看到别人的作品在地图上跑。\n\n适合比起比赛更喜欢动手折腾的玩家。",
+          "controls": "WASD：移动\nShift：冲刺\n空格：跳跃\n鼠标：转动视角\n左键：放置 / 互动\n右键：移除\nE：进入座位 / 启动\nB：背包\nT（按住）：工具轮盘\nR：旋转方块\n1–9、0：切换快捷栏"
+        }
+      }
+    },
+    {
+      "name": "Rob a Garden",
+      "slug": "rob-a-garden",
+      "primaryCategory": "arcade",
+      "tags": ["obby", "idle", "3d"],
+      "externalUrl": "https://www.crazygames.com/game/rob-a-garden",
+      "sourceUrl": "https://www.crazygames.com/game/rob-a-garden",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "rob-a-garden_16x9/20261027135954/rob-a-garden_16x9-cover.png",
+      "developer": "Thomas Tschinkel",
+      "featured": true,
+      "editorialOrder": 30,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/rob-a-garden",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Sneak into guarded gardens, grab a seed sack and sprint home before the guard catches you, then grow what you took into cash-making plants.",
+          "description": "Rob a Garden mixes a running game with a light farming loop. Each garden has a guard who only chases you while you carry a seed sack; get caught and you drop it. Make it back to your base and the seed is yours to plant.\n\nGrown plants come in five rarities, with the occasional golden or rainbow version worth several times more, and they earn money every second. Spend that money on treadmill training to get faster, which lets you reach richer gardens. The game page lists 13 worlds, from a farm and a desert all the way up to a sky kingdom.\n\nGood for players who like steady upgrades with a little chase tension on top.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "溜进有守卫的花园抢一袋种子，赶在被抓之前跑回基地，再把种子种成能赚钱的植物。",
+          "description": "Rob a Garden 把跑酷和轻度种田结合在一起。每个花园都有守卫，只有你背着种子袋时才会追你；被抓到就会掉袋子。跑回自己基地的安全区，种子就归你了，可以种下去。\n\n长成的植物分五种稀有度，偶尔会出现价值翻倍的金色或彩虹版本，每秒都在产出金钱。用钱在跑步机上训练提升速度，就能去更远、更值钱的花园。游戏页列出了 13 个世界，从农场、沙漠一直到天空王国。\n\n适合喜欢稳定升级、又想要一点追逐紧张感的玩家。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "Reboot Shop",
+      "slug": "reboot-shop",
+      "primaryCategory": "sim",
+      "tags": ["management", "relaxing", "3d"],
+      "externalUrl": "https://www.crazygames.com/game/reboot-shop",
+      "sourceUrl": "https://www.crazygames.com/game/reboot-shop",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "reboot-shop_16x9/20261023094002/reboot-shop_16x9-cover.png",
+      "featured": true,
+      "editorialOrder": 40,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/reboot-shop",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Run a small repair shop: open up broken phones, controllers and handhelds, find the fault, swap parts and hand the gadget back working.",
+          "description": "Reboot Shop is a hands-on repair simulation. Customers bring in broken gadgets, and you take them apart screw by screw, unplug cables, clean dusty components and replace damaged parts until the device powers on again.\n\nEarnings go into better tools and shop upgrades. You can also buy broken gadgets from a market to restore and resell, keep rare finds in a showcase, or open a daily crate that hides two faults for you to track down.\n\nA calm, tactile game for anyone who likes taking things apart to see how they work.",
+          "controls": "Click / tap: interact with gadgets, tools and menus\nHold on a screw: loosen or tighten it\nClick and drag: lift parts, move components, discard broken pieces\nBrush + drag: clean dirty components"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "经营一家小维修铺：拆开坏掉的手机、手柄和掌机，找出故障、换零件，再把修好的设备还给顾客。",
+          "description": "Reboot Shop 是一款动手感很强的维修模拟游戏。顾客把坏掉的设备送来，你一颗颗拧下螺丝、拔掉排线、清理灰尘、更换损坏的零件，直到设备重新开机。\n\n赚到的钱用来买更好的工具、升级店铺。你也可以从市场收购坏设备，修好后转卖，把稀有的修复品放进展柜，或者开每日神秘箱，找出里面藏着的两处故障。\n\n适合喜欢拆东西、想看看里面怎么运作的玩家，节奏轻松。",
+          "controls": "点击 / 轻触：操作设备、工具和菜单\n按住螺丝：拧松或拧紧\n点击并拖动：取出零件、移动部件、丢弃坏件\n刷子 + 拖动：清洁脏污的部件"
+        }
+      }
+    },
+    {
+      "name": "Crab Cove : Pixel Puzzle",
+      "slug": "crab-cove-pixel-puzzle",
+      "primaryCategory": "puzzle",
+      "tags": ["pixel", "relaxing", "casual", "single-player"],
+      "externalUrl": "https://www.crazygames.com/game/crab-cove-pixel-puzzle",
+      "sourceUrl": "https://www.crazygames.com/game/crab-cove-pixel-puzzle",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "crab-cove-pixel-puzzle_16x9/20261021040943/crab-cove-pixel-puzzle_16x9-cover.png",
+      "developer": "Sunny",
+      "featured": true,
+      "editorialOrder": 50,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/crab-cove-pixel-puzzle",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Clear a picture one pixel at a time by sending in blocks of the right colour. Only exposed pixels can be taken, so the order of your moves matters.",
+          "description": "Crab Cove : Pixel Puzzle is a calm colour puzzle. Each level is a pixel-art picture, and you take it apart by sending coloured blocks onto the board to collect matching pixels.\n\nThe catch is that only pixels on the edge of the picture can be collected, so you need to plan which colour to send next instead of tapping at random. Later levels add frozen, hidden and locked pixels that take extra steps to clear.\n\nThe game page lists more than 200 levels. It suits short, low-pressure sessions on desktop or phone.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "派出对应颜色的方块，一点点清空像素画；只有露在外面的像素能收走，所以要想好顺序。",
+          "description": "Crab Cove : Pixel Puzzle 是一款节奏舒缓的颜色解谜游戏。每关是一幅像素画，你把不同颜色的方块送上棋盘，收集颜色相同的像素，直到整幅画被清空。\n\n只有暴露在边缘的像素才能被收走，所以先送哪种颜色需要规划，不能乱点。后面的关卡会出现冰冻、隐藏和上锁的像素，要多走几步才能处理。\n\n游戏页标明有 200 多个关卡，适合在电脑或手机上轻松玩几关。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "Fantasy Online 2",
+      "slug": "fantasy-online-2",
+      "primaryCategory": "adventure",
+      "tags": ["multiplayer", "pixel", "2d"],
+      "externalUrl": "https://www.crazygames.com/game/fantasy-online-2",
+      "sourceUrl": "https://www.crazygames.com/game/fantasy-online-2",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "fantasy-online-2_16x9/20260612020512/fantasy-online-2_16x9-cover",
+      "developer": "Pixel Games LLC",
+      "featured": true,
+      "editorialOrder": 60,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/fantasy-online-2",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "A browser MMORPG drawn in 16-bit pixel art: make a hero, team up with other players, fight monsters and work through quests in a shared world.",
+          "description": "Fantasy Online 2 is an online role-playing game styled after the 16-bit console era. You create a character, explore a large pixel-art world, and take on quests and monsters alongside other players.\n\nProgress comes from levelling up, learning new skills and improving your gear, and the writing leans light and humorous rather than grim.\n\nWorth a try if you miss old-school console RPGs but want the social side of an MMO, playable straight in a desktop or mobile browser.",
+          "controls": "Left mouse button: use the game's menus and buttons"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "16 位像素画风的网页 MMORPG：创建角色，和其他玩家组队打怪、做任务。",
+          "description": "Fantasy Online 2 是一款致敬 16 位主机时代的网页多人角色扮演游戏。你创建自己的角色，在一个像素风的大世界里探索，和其他玩家一起接任务、打怪物。\n\n成长靠升级、学技能和换装备，整体基调轻松，带点幽默。\n\n适合怀念老式主机 RPG、又想和别人一起玩的玩家，电脑和手机浏览器都能直接玩。",
+          "controls": "鼠标左键：操作游戏菜单和按钮"
+        }
+      }
+    },
+    {
+      "name": "Snowball Rush",
+      "slug": "snowball-rush",
+      "primaryCategory": "arcade",
+      "tags": ["obby", "3d", "casual"],
+      "externalUrl": "https://www.crazygames.com/game/snowball-rush-tcp",
+      "sourceUrl": "https://www.crazygames.com/game/snowball-rush-tcp",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "snowball-rush-tcp_16x9/20261102111251/snowball-rush-tcp_16x9-cover.png",
+      "developer": "Fluffy Games",
+      "featured": true,
+      "editorialOrder": 70,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/snowball-rush-tcp",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Train your speed on a treadmill, then roll a snowball down a 15 km icy track where it grows the farther it goes, collecting wins at checkpoints.",
+          "description": "Snowball Rush is an incremental racing game. You build up speed by training on treadmills, then send your snowball down a long downhill track, steering into the side pockets to collect wins at the checkpoints along the way.\n\nWins buy upgrades and new training zones, eggs hatch into pets that boost your training, and there are snowball skins and blocky characters to unlock. A rebirth option restarts your run with a bigger multiplier, and leaderboards track the fastest players.\n\nIt works on desktop and mobile, in portrait or landscape.",
+          "controls": "WASD / Arrow keys: move\nSpace: jump\nMouse (hold and drag): look around\nMouse wheel: zoom\nQ: go to your best training zone\nR: teleport menu\nMobile: left joystick to move, swipe to look, on-screen buttons to jump, train and teleport"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "先在跑步机上练速度，再让雪球沿 15 公里的冰道滚下去，越滚越大，沿途在检查点拿胜利点。",
+          "description": "Snowball Rush 是一款数值成长型的竞速游戏。你在跑步机上训练提升速度，然后让雪球沿着长长的下坡冰道滚下去，转向两侧的凹槽，在沿途的检查点收集胜利点。\n\n胜利点可以换升级和新的训练区；孵蛋能得到提升训练效率的宠物；还有雪球皮肤和方块角色可以解锁。“重生”会让你带着更高的倍率重新开始，排行榜记录最快的玩家。\n\n电脑和手机都能玩，横屏竖屏都支持。",
+          "controls": "WASD / 方向键：移动\n空格：跳跃\n按住鼠标拖动：转动视角\n鼠标滚轮：缩放\nQ：前往最好的训练区\nR：传送菜单\n手机：左侧摇杆移动，滑动屏幕转视角，屏幕按钮跳跃、训练和传送"
+        }
+      }
+    },
+    {
+      "name": "Obby Fish for Egg",
+      "slug": "obby-fish-for-egg",
+      "primaryCategory": "arcade",
+      "tags": ["multiplayer", "obby", "relaxing"],
+      "externalUrl": "https://www.crazygames.com/game/obby-fish-for-egg",
+      "sourceUrl": "https://www.crazygames.com/game/obby-fish-for-egg",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "obby-fish-for-egg_16x9/20261020051758/obby-fish-for-egg_16x9-cover.png",
+      "featured": true,
+      "editorialOrder": 80,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/obby-fish-for-egg",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Cast into themed ocean zones to reel up eggs of different rarities, outrun the sea monsters on the way home, and hatch creatures that earn you money.",
+          "description": "Obby Fish for Egg is a multiplayer fishing and collecting game. You cross a bridge into themed ocean areas, cast your line and reel in eggs that range from common to legendary.\n\nCarrying an egg makes you a target: sea monsters give chase until you reach your farm. Set the egg down on your plot, let it hatch, and the creature earns money over time. Spend it on better rods for rarer catches, extra plots and luck upgrades, and fill your codex with every species.\n\nAll players share one lobby, where trails and auras are on display.",
+          "controls": "WASD / Arrow keys: move\nMouse: look around\nMouse wheel: zoom\nHold left click or Space, then release: cast (hold longer to throw further)\nE: interact (place egg, hatch, open shops)"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "在不同主题的海域抛竿钓蛋，躲开追来的海怪跑回农场，把蛋孵成能持续赚钱的小生物。",
+          "description": "Obby Fish for Egg 是一款多人钓鱼收集游戏。你走过桥进入不同主题的海域，抛竿收线，钓上从普通到传说等级不等的蛋。\n\n背着蛋就会被盯上：海怪会一直追你，直到你跑回农场。把蛋放在自己的地块上孵化，孵出的小生物会持续帮你赚钱。用钱买更好的鱼竿钓更稀有的蛋，扩充地块、提升幸运值，把图鉴集满。\n\n所有玩家在同一个大厅里，可以互相展示拖尾和光环。",
+          "controls": "WASD / 方向键：移动\n鼠标：转动视角\n鼠标滚轮：缩放\n按住左键或空格后松开：抛竿（按得越久抛得越远）\nE：互动（放蛋、孵化、打开商店）"
+        }
+      }
+    },
+    {
+      "name": "Mahjong Gardens",
+      "slug": "mahjong-gardens",
+      "primaryCategory": "puzzle",
+      "tags": ["relaxing", "casual", "single-player"],
+      "externalUrl": "https://www.crazygames.com/game/mahjong-gardens",
+      "sourceUrl": "https://www.crazygames.com/game/mahjong-gardens",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "games/mahjong-gardens/cover-1627759110762.png",
+      "featured": true,
+      "editorialOrder": 90,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/mahjong-gardens",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Classic mahjong solitaire: clear the board by pairing identical free tiles, with hints, shuffles and a rotating view for when you get stuck.",
+          "description": "Mahjong Gardens is a solitaire take on mahjong. Tiles are stacked into a layout, and you remove them in matching pairs. A tile can only be picked when nothing sits on top of it and at least one of its sides is open.\n\nThe round ends when the board is empty, or when you run out of moves and shuffles. A hint button points out one valid pair, and arrow buttons let you look at the stack from another angle.\n\nPlayable with a mouse, or by tapping on mobile.",
+          "controls": "Click / tap: select tiles to pair\nOn-screen buttons: shuffle, hint, rotate the view"
+        },
+        "zh": {
+          "alias": "花园麻将",
+          "summary": "经典麻将连连看：把可以拿起的相同牌两两配对清空牌面，卡住时有提示、洗牌和旋转视角。",
+          "description": "Mahjong Gardens 是单人玩法的麻将消除游戏。牌按一定布局堆叠，你要把相同的牌两两配对移走。一张牌只有在上面没有压着其他牌、且至少一侧空出来时才能选。\n\n牌面清空或者没有可走的步数和洗牌次数时，本局结束。“提示”按钮会指出一对可以消除的牌，方向按钮可以从另一个角度查看牌堆。\n\n用鼠标点击或在手机上轻触都能玩。",
+          "controls": "点击 / 轻触：选择要配对的牌\n屏幕按钮：洗牌、提示、旋转视角"
+        }
+      }
+    },
+    {
+      "name": "Cooking Rage",
+      "slug": "cooking-rage",
+      "primaryCategory": "arcade",
+      "tags": ["management", "casual", "2d", "single-player"],
+      "externalUrl": "https://www.crazygames.com/game/cooking-rage-cno",
+      "sourceUrl": "https://www.crazygames.com/game/cooking-rage-cno",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "cooking-rage-cno_16x9/20261013065726/cooking-rage-cno_16x9-cover.png",
+      "developer": "Famobi",
+      "featured": true,
+      "editorialOrder": 100,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/cooking-rage-cno",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Work your way through restaurants around the world, cooking burgers, pastries and pizzas against the clock while customers wait at the counter.",
+          "description": "Cooking Rage is a time-management cooking game. You open restaurants one after another, each with its own cuisine, from American burgers to French pastries and Italian pizza, and prepare and serve orders before the customers run out of patience.\n\nSuccess comes from quick taps and doing tasks in a sensible order rather than from following recipes, and each new restaurant raises the pace.\n\nA familiar formula in a bright 2D style, played with a mouse or touch.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "在世界各地开一家又一家餐厅，赶在顾客失去耐心前做好汉堡、甜点和披萨。",
+          "description": "Cooking Rage 是一款限时经营类的烹饪游戏。你一家接一家地开餐厅，每家主打不同的菜系，从美式汉堡、法式甜点到意大利披萨，要在顾客等得不耐烦之前备菜、出餐。\n\n过关靠的是手快和合理安排先后顺序，而不是记菜谱；每开一家新店，节奏都会更快。\n\n玩法熟悉，画面明亮的 2D 风格，鼠标或触屏操作。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "Steal Dino Egg",
+      "slug": "steal-dino-egg",
+      "primaryCategory": "arcade",
+      "tags": ["multiplayer", "obby", "tycoon", "3d"],
+      "externalUrl": "https://www.crazygames.com/game/steal-dino-egg",
+      "sourceUrl": "https://www.crazygames.com/game/steal-dino-egg",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "steal-dino-egg_16x9/20260917074330/steal-dino-egg_16x9-cover.png",
+      "developer": "Kovi Games",
+      "featured": true,
+      "editorialOrder": 110,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/steal-dino-egg",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Run obstacle courses into dinosaur zones, snatch an egg and escape before its owner catches you, then hatch it to grow your own dino park.",
+          "description": "Steal Dino Egg is an online obstacle course with a tycoon layer. You head into dinosaur territory, get past the obstacles, grab an egg and run for it before the dinosaur reaches you.\n\nEggs you bring home hatch into new dinosaurs for your park, and a bigger park unlocks new areas and rarer species to collect. Other players share the same world, racing for the same eggs and showing off their collections.\n\nPlayable on desktop and mobile.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "闯过障碍进入恐龙领地，抢到恐龙蛋后赶在被追上前逃走，再把蛋孵出来扩建自己的恐龙乐园。",
+          "description": "Steal Dino Egg 是一款带经营元素的在线障碍闯关游戏。你进入恐龙的地盘，越过障碍、抓起一颗蛋，然后在恐龙追上之前逃跑。\n\n带回家的蛋会孵出新恐龙住进你的乐园；乐园越大，能解锁的新区域和稀有物种越多。其他玩家和你在同一个世界里，争抢同样的蛋，也会互相展示自己的收藏。\n\n电脑和手机都能玩。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "All Out",
+      "slug": "all-out",
+      "primaryCategory": "adventure",
+      "tags": ["multiplayer", "2d"],
+      "externalUrl": "https://www.crazygames.com/game/all-out-nju",
+      "sourceUrl": "https://www.crazygames.com/game/all-out-nju",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "all-out-nju_16x9/20261026044430/all-out-nju_16x9-cover.png",
+      "developer": "All Out",
+      "featured": true,
+      "editorialOrder": 120,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/all-out-nju",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "A lobby full of quick multiplayer modes: fish with friends, defend your bed in team battles, build a city career, or eat your way up to boss fights.",
+          "description": "All Out is less a single game than a platform of modes that players can make and play together, sharing one account and one friends list.\n\nThe modes listed on the game page include co-operative fishing where you build a house to show off your catch, a Bed Wars-style team mode where you guard your base and raid the others, a city role-play where you level up jobs, and a silly growth game where you eat, get bigger and take on bosses.\n\nIt suits groups who want to hop between short sessions without installing anything. Expect the line-up of modes to change over time.",
+          "controls": "WASD / Arrow keys: move\nE: interact"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "多人小游戏合集：和朋友一起钓鱼、守床团战、在城市里发展职业，或者靠吃变大去打 Boss。",
+          "description": "All Out 更像一个多人游戏平台：玩家可以在里面创作和游玩各种模式，共用同一个账号和好友列表。\n\n游戏页列出的模式包括：和朋友一起钓鱼、建房展示收藏的钓鱼模式；保护自家床、进攻对手基地的团队对战；升级职业的城市角色扮演；以及靠吃东西长大、挑战 Boss 的趣味模式。\n\n适合想和朋友轮流玩几局短游戏的人，不用安装。模式会随时间更新，以游戏内为准。",
+          "controls": "WASD / 方向键：移动\nE：互动"
+        }
+      }
+    },
+    {
+      "name": "Grand Vegas Police Simulator",
+      "slug": "grand-vegas-police-simulator",
+      "primaryCategory": "driving",
+      "tags": ["open-world", "single-player"],
+      "externalUrl": "https://www.crazygames.com/game/grand-vegas-police-simulator",
+      "sourceUrl": "https://www.crazygames.com/game/grand-vegas-police-simulator",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "grand-vegas-police-simulator_16x9/20261020075400/grand-vegas-police-simulator_16x9-cover.png",
+      "developer": "Myke38",
+      "featured": false,
+      "editorialOrder": 200,
+      "linkStatus": "valid",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Patrol a large open map in a police car and pull over drivers who speed, run red lights or steal cars, earning higher badges as you clear missions.",
+          "description": "Grand Vegas Police Simulator puts you behind the wheel of a patrol car in a big open driving map with a city, forests, canyons and mountain roads.\n\nYour job is to catch drivers breaking the rules, whether that is speeding, dangerous driving, running a red light or driving a stolen car, and to complete missions such as chases, escorts and bank-robbery calls to climb a ladder of ranked badges.\n\nYou can choose between city, off-road and fast cars and change their paint, decals, wheels and tyre smoke. A single-player game for people who enjoy free driving with a light layer of objectives on top.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "维加斯警察模拟器",
+          "summary": "开着警车在大地图里巡逻，拦下超速、闯红灯和偷车的司机，完成任务升级警徽。",
+          "description": "在 Grand Vegas Police Simulator 里，你驾驶警车在一张很大的开放地图上巡逻，地图里有城市、森林、峡谷和山路。\n\n你的任务是抓违章司机：超速、危险驾驶、闯红灯或驾驶被盗车辆。完成追捕、护送、银行抢劫案等任务可以提升警衔，解锁更高等级的警徽。\n\n车辆分城市车、越野车和高速车，可以改涂装、贴纸、轮毂和轮胎烟雾颜色。适合喜欢自由驾驶、又想有点任务目标的单人玩家。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "Build and Crush",
+      "slug": "build-and-crush",
+      "primaryCategory": "action",
+      "tags": ["building", "sandbox", "physics", "3d"],
+      "externalUrl": "https://www.crazygames.com/game/build-and-crush",
+      "sourceUrl": "https://www.crazygames.com/game/build-and-crush",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "build-and-crush_16x9/20261026101231/build-and-crush_16x9-cover.png",
+      "developer": "Ctrl4ltDel",
+      "featured": false,
+      "editorialOrder": 210,
+      "linkStatus": "valid",
+      "deviceSupport": "desktop",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/build-and-crush",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Two halves of one sandbox: stack bricks, glass and wood into something you are proud of, then pick any creation and wreck it with TNT, cannons and fire.",
+          "description": "Build and Crush splits the fun in two. In build mode you place normal and coloured blocks, each with column, stair and triangle variants, then save your creation or publish it so other players can find it.\n\nIn crush mode you load a random creation and take it apart with explosives, a cannon, an earthquake or fire, with a single nuclear option for when you want everything gone at once.\n\nA casual, goal-free toy that plays best on desktop.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一半建造一半破坏：用砖、玻璃和木头搭出作品，再挑一个作品用炸药、大炮和火把它拆掉。",
+          "description": "Build and Crush 把乐趣分成两半。建造模式下，你摆放普通方块和彩色方块（每种都有柱形、台阶、三角等变体），保存作品，也可以公开给其他玩家。\n\n破坏模式下，你随机载入一个作品，用炸药、大炮、地震或火焰把它拆掉；想一次清场时，还有一颗“核弹”可用。\n\n没有固定目标，适合在电脑上随手玩一会儿。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "Who Dies Last?",
+      "slug": "who-dies-last",
+      "primaryCategory": "action",
+      "tags": ["physics", "3d", "single-player"],
+      "externalUrl": "https://www.crazygames.com/game/who-dies-last",
+      "sourceUrl": "https://www.crazygames.com/game/who-dies-last",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "who-dies-last_16x9/20260421024310/who-dies-last_16x9-cover",
+      "developer": "Famobi",
+      "featured": false,
+      "editorialOrder": 220,
+      "linkStatus": "valid",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Pick a stickman hero, hand them weapons and send them into a messy ragdoll brawl where the last fighter standing wins.",
+          "description": "Who Dies Last? is a short-session stickman fighter built on ragdoll physics. Before each fight you choose a hero and equip weapons, then jump into a battle where bodies flop, fly and collide in unpredictable ways.\n\nThe loose physics make results silly rather than precise, which is most of the appeal. Everything is controlled with the mouse through the game's menus.",
+          "controls": "Mouse: interact with the game's menus"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "选一个火柴人英雄、给他配好武器，丢进一场混乱的布娃娃大乱斗，看谁最后倒下。",
+          "description": "Who Dies Last? 是一款基于布娃娃物理的火柴人对战游戏，每局都很短。开打前选择英雄、装备武器，然后进入战斗，角色会以各种难以预料的方式摔倒、飞出、撞在一起。\n\n物理效果比较松散，结果往往很滑稽而不是精准，这正是它的乐趣。所有操作都用鼠标在游戏界面里完成。",
+          "controls": "鼠标：操作游戏界面"
+        }
+      }
+    },
+    {
+      "name": "Bricks Breaker",
+      "slug": "bricks-breaker",
+      "primaryCategory": "arcade",
+      "tags": ["casual", "physics", "single-player"],
+      "externalUrl": "https://www.crazygames.com/game/bricks-breaker",
+      "sourceUrl": "https://www.crazygames.com/game/bricks-breaker",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "bricks-breaker_16x9/20261022065953/bricks-breaker_16x9-cover.png",
+      "developer": "Playtouch",
+      "featured": false,
+      "editorialOrder": 230,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/bricks-breaker",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Line up a shot, release it, and watch the ball bounce through a wall of numbered bricks: a simple aim-and-shoot game for short breaks.",
+          "description": "Bricks Breaker is a minimalist ball shooter. The board fills with numbered bricks, and you aim from the bottom, let go, and watch the ball bounce off walls and bricks to break them.\n\nThere is very little to learn: the whole game is about finding the angle that sends the ball where it can do the most damage. It runs in desktop and mobile browsers.",
+          "controls": "Hold the left mouse button and move: aim\nRelease: shoot"
+        },
+        "zh": {
+          "alias": "打砖块",
+          "summary": "瞄好角度、松手发射，看小球在写着数字的砖块之间来回弹，简单的瞄准射击小游戏。",
+          "description": "Bricks Breaker 是一款极简的弹球射击游戏。场上布满带数字的砖块，你从底部瞄准、松手发射，让小球在墙壁和砖块之间反弹，把砖块打碎。\n\n几乎不用学习，核心就是找到能让小球造成最多破坏的角度。电脑和手机浏览器都能玩。",
+          "controls": "按住鼠标左键移动：瞄准\n松开：发射"
+        }
+      }
+    },
+    {
+      "name": "Gold Digger FRVR",
+      "slug": "gold-digger-frvr",
+      "primaryCategory": "sim",
+      "tags": ["2d", "physics", "single-player"],
+      "externalUrl": "https://www.crazygames.com/game/gold-digger-frvr",
+      "sourceUrl": "https://www.crazygames.com/game/gold-digger-frvr",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "gold-digger-frvr_16x9/20250519082511/gold-digger-frvr_16x9-cover",
+      "developer": "Chris Benjaminsen",
+      "featured": false,
+      "editorialOrder": 240,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/gold-digger-frvr",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Dig down through layers of earth for gems and ore, watch out for loose rocks above your head, and spend your haul on upgrades for your miner.",
+          "description": "Gold Digger FRVR is a side-on mining game. You tunnel underground with the arrow keys, collecting gems and precious metals as you go deeper.\n\nThe main danger is the ground itself: rocks you dig around can fall on your miner, so the order in which you clear blocks matters. Between runs you buy upgrades that make digging faster and more efficient.\n\nFirst released in 2019, it runs in desktop and mobile browsers.",
+          "controls": "Arrow keys: move and dig"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一路往地下挖，收集宝石和矿石，同时小心头顶松动的石头，用收获给矿工升级。",
+          "description": "Gold Digger FRVR 是一款横版挖矿游戏。你用方向键往地下挖隧道，越挖越深，沿途收集宝石和贵金属。\n\n最大的危险来自地层本身：挖空周围的土后，石头可能砸到矿工头上，所以先挖哪一块很重要。每轮之间可以购买升级，让挖掘更快、更高效。\n\n游戏于 2019 年首次推出，电脑和手机浏览器都能玩。",
+          "controls": "方向键：移动和挖掘"
+        }
+      }
+    },
+    {
+      "name": "Epic Sword Battle! Fight in Arena",
+      "slug": "epic-sword-battle",
+      "primaryCategory": "arcade",
+      "tags": ["physics", "3d", "single-player"],
+      "externalUrl": "https://www.crazygames.com/game/epic-sword-battle-fight-in-arena",
+      "sourceUrl": "https://www.crazygames.com/game/epic-sword-battle-fight-in-arena",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "epic-sword-battle-fight-in-arena_16x9/20251117160647/epic-sword-battle-fight-in-arena_16x9-cover",
+      "developer": "Eccentric Games",
+      "featured": false,
+      "editorialOrder": 250,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/epic-sword-battle-fight-in-arena",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Fight with a sword in each hand in a ragdoll arena where you never fully control your swing; quick, well-timed hits decide who walks away champion.",
+          "description": "Epic Sword Battle! Fight in Arena is a 3D duel game built on ragdoll physics. Your fighter holds a sword in each hand, but the floppy movement means the blade rarely lands exactly where you meant it to, so timing and reaction count for more than precise aim.\n\nEarly levels pit you against a single opponent; from the third level on you face two at once, and it pays to take them down one at a time. In every stage the goal is the same: beat everyone and stay standing.\n\nPlayable on desktop and mobile.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "双手持剑在布娃娃竞技场里决斗，挥剑从不完全听使唤，靠反应和时机分出胜负。",
+          "description": "Epic Sword Battle! Fight in Arena 是一款基于布娃娃物理的 3D 决斗游戏。你的角色双手各持一把剑，但动作软绵绵的，剑很少能准确落在你想要的位置，所以时机和反应比精准瞄准更重要。\n\n前几关一次只对付一个对手，从第三关开始会同时面对两个，最好一个一个解决。每一关的目标都一样：打倒所有人，自己站到最后。\n\n电脑和手机都能玩。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "Elemental Merge",
+      "slug": "elemental-merge",
+      "primaryCategory": "strategy",
+      "tags": ["2d", "single-player"],
+      "externalUrl": "https://www.crazygames.com/game/elemental-merge",
+      "sourceUrl": "https://www.crazygames.com/game/elemental-merge",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "elemental-merge_16x9/20260408072718/elemental-merge_16x9-cover",
+      "developer": "MYN Games",
+      "featured": false,
+      "editorialOrder": 260,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/elemental-merge",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "Drag elements onto each other to merge water, fire, air and earth into stronger creatures, then send your army into battle against the enemy's.",
+          "description": "Elemental Merge is a merge-and-battle strategy game. You start with basic elements, drag matching ones together to create new and stronger elementals, then let your army fight the opposing side.\n\nEach element has strengths and weaknesses (water, for instance, hits fire harder), so the game is about knowing which combinations to build before the fight rather than about reflexes. A careless merge can set you back, so think before you drop.\n\nThere are eight levels, playable on desktop and mobile.",
+          "controls": "Drag and drop: merge elements"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "把元素拖到一起合成：水、火、风、土组合出更强的元素生物，再派你的军队和敌人对战。",
+          "description": "Elemental Merge 是一款合成加对战的策略游戏。你从基础元素开始，把相同的元素拖到一起，合成更新、更强的元素生物，然后让你的军队和对方交战。\n\n每种元素都有克制关系（比如水对火伤害更高），所以关键是在开战前想清楚要合成什么，而不是拼手速。合错一步可能让你倒退，放手前先想一想。\n\n共八个关卡，电脑和手机都能玩。",
+          "controls": "拖放：合成元素"
+        }
+      }
+    },
+    {
+      "name": "Playground Man! Ragdoll Show!",
+      "slug": "playground-man-ragdoll-show",
+      "primaryCategory": "arcade",
+      "tags": ["physics", "3d", "casual", "relaxing"],
+      "externalUrl": "https://www.crazygames.com/game/ragdoll-break",
+      "sourceUrl": "https://www.crazygames.com/game/ragdoll-break",
+      "sourceFetchedAt": "2026-11-09T01:04:58+08:00",
+      "coverSourcePath": "ragdoll-break_16x9/20250311102953/ragdoll-break_16x9-cover",
+      "developer": "Eccentric Games",
+      "featured": false,
+      "editorialOrder": 270,
+      "linkStatus": "valid",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "Ragdoll Break",
+          "summary": "Drop cars, hurl balls and send a wooden stickman tumbling down stairs in a physics playground where causing the most damage is the whole point.",
+          "description": "Playground Man! Ragdoll Show! is a physics toy with a simple goal: knock a wooden stickman around as hard as you can. Press and hold an object to move it, release to launch it, and watch the ragdoll react.\n\nLevels hand you different props and set-ups, such as falling weights, passing traffic, walls and stairs, and some put several stickmen in play at once. Trying out combinations to see what happens is the main draw.\n\nIt works well as a short stress-relief break.",
+          "controls": "Press and hold an object: move it\nRelease: launch it"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "扔汽车、砸球、把木头火柴人推下楼梯：一个以“造成最大破坏”为目标的物理游乐场。",
+          "description": "Playground Man! Ragdoll Show! 是一款物理玩具类游戏，目标很简单：用尽办法折腾一个木头火柴人。按住物体可以移动它，松手就会发射出去，然后看布娃娃怎么反应。\n\n每关给你的道具和场景都不同，比如下落的杠铃、来往的车辆、墙壁和楼梯，有些关卡还会同时出现好几个火柴人。尝试各种组合、看看会发生什么，是最大的乐趣。\n\n适合当作短暂的解压休息。",
+          "controls": "按住物体：移动\n松开：发射"
+        }
+      }
+    }
+  ]
+}

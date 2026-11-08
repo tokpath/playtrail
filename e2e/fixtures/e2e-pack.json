@@ -1,0 +1,1064 @@
+{
+  "schemaVersion": 1,
+  "games": [
+    {
+      "name": "Bloxd.io",
+      "slug": "bloxdhop-io",
+      "primaryCategory": "io",
+      "tags": [
+        "multiplayer",
+        "building",
+        "3d"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/bloxdhop-io",
+      "sourceUrl": "https://www.crazygames.com/game/bloxdhop-io",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "Dob Studio",
+      "coverSourcePath": "bloxdhop-io_16x9/20260101000000/bloxdhop-io_16x9-cover.png",
+      "featured": true,
+      "editorialOrder": 10,
+      "linkStatus": "valid",
+      "deviceSupport": "both",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture .io entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Bloxd.io is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a .io game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "方块世界",
+          "summary": "一款.io 类类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Bloxd.io 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按.io 类游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      },
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/bloxdhop-io"
+    },
+    {
+      "name": "Bloxity.io",
+      "slug": "bloxity-io",
+      "primaryCategory": "io",
+      "tags": [
+        "multiplayer",
+        "pvp",
+        "3d"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/bloxity-io",
+      "sourceUrl": "https://www.crazygames.com/game/bloxity-io",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "bloxity-io_16x9/20260101000000/bloxity-io_16x9-cover.png",
+      "featured": true,
+      "editorialOrder": 20,
+      "linkStatus": "valid",
+      "deviceSupport": "desktop",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture .io entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Bloxity.io is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a .io game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款.io 类类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Bloxity.io 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按.io 类游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      },
+      "deviceEvidenceUrl": "https://www.crazygames.com/game/bloxity-io"
+    },
+    {
+      "name": "Messy Mart",
+      "slug": "messy-mart",
+      "primaryCategory": "arcade",
+      "tags": [
+        "casual",
+        "management"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/messy-mart",
+      "sourceUrl": "https://www.crazygames.com/game/messy-mart",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "messy-mart_16x9/20260101000000/messy-mart_16x9-cover.png",
+      "featured": true,
+      "editorialOrder": 40,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture arcade entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Messy Mart is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a arcade game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款街机类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Messy Mart 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按街机游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Steal Eggs",
+      "slug": "steal-a-eggs",
+      "primaryCategory": "arcade",
+      "tags": [
+        "casual",
+        "physics"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/steal-a-eggs",
+      "sourceUrl": "https://www.crazygames.com/game/steal-a-eggs",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "steal-a-eggs_16x9/20260101000000/steal-a-eggs_16x9-cover.png",
+      "featured": true,
+      "editorialOrder": 50,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture arcade entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Steal Eggs is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a arcade game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款街机类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Steal Eggs 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按街机游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Growden.io",
+      "slug": "growden-io",
+      "primaryCategory": "sim",
+      "tags": [
+        "building",
+        "multiplayer"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/growden-io",
+      "sourceUrl": "https://www.crazygames.com/game/growden-io",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "grow-a-garden---growden-io_16x9/20260101000000/grow-a-garden---growden-io_16x9-cover.png",
+      "featured": false,
+      "editorialOrder": 60,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture simulation entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Growden.io is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a simulation game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款模拟类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Growden.io 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按模拟游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Pendo Puzzle E2E",
+      "slug": "pendo-puzzle-e2e",
+      "primaryCategory": "puzzle",
+      "tags": [
+        "relaxing",
+        "idle"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/pendo-puzzle-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/pendo-puzzle-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 70,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture puzzle entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Pendo Puzzle E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a puzzle game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        }
+      }
+    },
+    {
+      "name": "Vault Sprint E2E",
+      "slug": "vault-sprint-e2e",
+      "primaryCategory": "action",
+      "tags": [
+        "parkour"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/vault-sprint-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/vault-sprint-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 80,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture action entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Vault Sprint E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a action game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款动作类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Vault Sprint E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按动作游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Orbit Keeper E2E",
+      "slug": "orbit-keeper-e2e",
+      "primaryCategory": "action",
+      "tags": [
+        "stealth"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/orbit-keeper-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/orbit-keeper-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 90,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture action entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Orbit Keeper E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a action game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款动作类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Orbit Keeper E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按动作游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Kite Field E2E",
+      "slug": "kite-field-e2e",
+      "primaryCategory": "sim",
+      "tags": [
+        "building"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/kite-field-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/kite-field-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 100,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture simulation entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Kite Field E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a simulation game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        }
+      }
+    },
+    {
+      "name": "Rope Verse E2E",
+      "slug": "rope-verse-e2e",
+      "primaryCategory": "action",
+      "tags": [
+        "parkour",
+        "multiplayer"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/rope-verse-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/rope-verse-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 110,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture action entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Rope Verse E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a action game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款动作类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Rope Verse E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按动作游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Wall Drift E2E",
+      "slug": "wall-drift-e2e",
+      "primaryCategory": "arcade",
+      "tags": [
+        "physics",
+        "casual"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/wall-drift-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/wall-drift-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 120,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture arcade entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Wall Drift E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a arcade game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款街机类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Wall Drift E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按街机游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Sky Hopper E2E",
+      "slug": "sky-hopper-e2e",
+      "primaryCategory": "adventure",
+      "tags": [
+        "stealth"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/sky-hopper-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/sky-hopper-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 130,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture adventure entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Sky Hopper E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a adventure game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款冒险类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Sky Hopper E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按冒险游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Deep Core E2E",
+      "slug": "deep-core-e2e",
+      "primaryCategory": "puzzle",
+      "tags": [
+        "relaxing"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/deep-core-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/deep-core-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "deep-core-e2e_16x9/20260101000000/deep-core-e2e_16x9-cover.png",
+      "featured": false,
+      "editorialOrder": 140,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture puzzle entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Deep Core E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a puzzle game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款益智解谜类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Deep Core E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按益智解谜游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "Neon Vault E2E",
+      "slug": "neon-vault-e2e",
+      "primaryCategory": "adventure",
+      "tags": [
+        "parkour"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/neon-vault-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/neon-vault-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 150,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture adventure entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Neon Vault E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a adventure game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款冒险类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Neon Vault E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按冒险游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Cliff Edge E2E",
+      "slug": "cliff-edge-e2e",
+      "primaryCategory": "action",
+      "tags": [
+        "physics"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/cliff-edge-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/cliff-edge-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 160,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture action entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Cliff Edge E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a action game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款动作类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Cliff Edge E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按动作游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Bounce Lab E2E",
+      "slug": "bounce-lab-e2e",
+      "primaryCategory": "action",
+      "tags": [
+        "parkour",
+        "stealth"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/bounce-lab-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/bounce-lab-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 170,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture action entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Bounce Lab E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a action game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款动作类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Bounce Lab E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按动作游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Lone Tide E2E",
+      "slug": "lone-tide-e2e",
+      "primaryCategory": "board",
+      "tags": [
+        "single-player"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/lone-tide-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/lone-tide-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 180,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture board entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Lone Tide E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a board game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款桌面棋盘类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Lone Tide E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按桌面棋盘游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "Fog Path E2E",
+      "slug": "fog-path-e2e",
+      "primaryCategory": "action",
+      "tags": [
+        "stealth"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/fog-path-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/fog-path-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 190,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture action entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Fog Path E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a action game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款动作类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Fog Path E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按动作游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Trail Runner E2E",
+      "slug": "trail-runner-e2e",
+      "primaryCategory": "action",
+      "tags": [
+        "parkour",
+        "stealth"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/trail-runner-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/trail-runner-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 200,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture action entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Trail Runner E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a action game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款动作类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Trail Runner E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按动作游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Summit Rush E2E",
+      "slug": "summit-rush-e2e",
+      "primaryCategory": "action",
+      "tags": [
+        "parkour"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/summit-rush-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/summit-rush-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 210,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture action entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Summit Rush E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a action game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款动作类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Summit Rush E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按动作游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "E2E Bulk 01",
+      "slug": "e2e-bulk-01",
+      "primaryCategory": "shooting",
+      "tags": [
+        "casual"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-bulk-01",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-bulk-01",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture shooting entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "E2E Bulk 01 is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a shooting game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款射击类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "E2E Bulk 01 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按射击游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "E2E Bulk 02",
+      "slug": "e2e-bulk-02",
+      "primaryCategory": "sports",
+      "tags": [
+        "management"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-bulk-02",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-bulk-02",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture sports entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "E2E Bulk 02 is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a sports game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款体育类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "E2E Bulk 02 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按体育游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "E2E Bulk 03",
+      "slug": "e2e-bulk-03",
+      "primaryCategory": "strategy",
+      "tags": [
+        "2d"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-bulk-03",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-bulk-03",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture strategy entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "E2E Bulk 03 is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a strategy game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款策略类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "E2E Bulk 03 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按策略游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "E2E Bulk 04",
+      "slug": "e2e-bulk-04",
+      "primaryCategory": "driving",
+      "tags": [
+        "pixel"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-bulk-04",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-bulk-04",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture driving entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "E2E Bulk 04 is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a driving game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款驾驶类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "E2E Bulk 04 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按驾驶游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "E2E Bulk 05",
+      "slug": "e2e-bulk-05",
+      "primaryCategory": "card",
+      "tags": [
+        "idle"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-bulk-05",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-bulk-05",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture card entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "E2E Bulk 05 is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a card game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款卡牌类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "E2E Bulk 05 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按卡牌游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "E2E Bulk 06",
+      "slug": "e2e-bulk-06",
+      "primaryCategory": "clicker",
+      "tags": [
+        "tycoon"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-bulk-06",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-bulk-06",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture clicker entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "E2E Bulk 06 is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a clicker game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款点击类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "E2E Bulk 06 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按点击游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "E2E Bulk 07",
+      "slug": "e2e-bulk-07",
+      "primaryCategory": "word",
+      "tags": [
+        "survival"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-bulk-07",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-bulk-07",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture word entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "E2E Bulk 07 is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a word game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款单词文字类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "E2E Bulk 07 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按单词文字游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "E2E Bulk 08",
+      "slug": "e2e-bulk-08",
+      "primaryCategory": "puzzle",
+      "tags": [
+        "horror"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-bulk-08",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-bulk-08",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture puzzle entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "E2E Bulk 08 is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a puzzle game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款益智解谜类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "E2E Bulk 08 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按益智解谜游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "E2E Bulk 09",
+      "slug": "e2e-bulk-09",
+      "primaryCategory": "puzzle",
+      "tags": [
+        "casual",
+        "2d"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-bulk-09",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-bulk-09",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture puzzle entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "E2E Bulk 09 is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a puzzle game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款益智解谜类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "E2E Bulk 09 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按益智解谜游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "E2E Bulk 10",
+      "slug": "e2e-bulk-10",
+      "primaryCategory": "sim",
+      "tags": [
+        "pixel"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-bulk-10",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-bulk-10",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture simulation entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "E2E Bulk 10 is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a simulation game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款模拟类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "E2E Bulk 10 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按模拟游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "E2E Bulk 11",
+      "slug": "e2e-bulk-11",
+      "primaryCategory": "adventure",
+      "tags": [
+        "casual"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-bulk-11",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-bulk-11",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": true,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture adventure entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "E2E Bulk 11 is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a adventure game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": ""
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款冒险类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "E2E Bulk 11 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按冒险游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": ""
+        }
+      }
+    },
+    {
+      "name": "Draft Alpha E2E",
+      "slug": "e2e-draft-alpha-e2e",
+      "primaryCategory": "shooting",
+      "tags": [
+        "2d"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-draft-alpha-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-draft-alpha-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": false,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture shooting entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Draft Alpha E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a shooting game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款射击类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Draft Alpha E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按射击游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    },
+    {
+      "name": "Draft Beta E2E",
+      "slug": "e2e-draft-beta-e2e",
+      "primaryCategory": "word",
+      "tags": [
+        "pixel"
+      ],
+      "externalUrl": "https://www.crazygames.com/game/e2e-draft-beta-e2e",
+      "sourceUrl": "https://www.crazygames.com/game/e2e-draft-beta-e2e",
+      "sourceFetchedAt": "2026-11-09T00:00:00+08:00",
+      "developer": "",
+      "coverSourcePath": "",
+      "featured": false,
+      "editorialOrder": 1000,
+      "linkStatus": "valid",
+      "deviceSupport": "unknown",
+      "publish": false,
+      "locales": {
+        "en": {
+          "alias": "",
+          "summary": "An E2E fixture word entry: short rounds, simple rules and a steady difficulty curve that keeps test runs predictable from start to finish.",
+          "description": "Draft Beta E2E is a fixed fixture entry created for the PlayTrail end-to-end acceptance suite, not a real editorial review.\n\nIt behaves like a word game: the first minute teaches the basics, the next few minutes stretch them, and nothing in the loop depends on randomness or the outside network.\n\nEverything on this page is deterministic test data, written to exercise list, detail, search and outbound behaviour.",
+          "controls": "WASD: move\nMouse: aim\nSpace: jump"
+        },
+        "zh": {
+          "alias": "",
+          "summary": "一款单词文字类别的端到端测试条目：规则简单、节奏稳定，短休息时间也能完整跑完一局，方便测试反复验证。",
+          "description": "Draft Beta E2E 是本套端到端验收使用的固定测试条目，不是真实的编辑评测。\n\n它按单词文字游戏的方式运转：开局一分钟学会基本操作，随后节奏逐步加快，整个过程不依赖随机性或外部网络。\n\n页面上的全部内容都是确定性测试数据，用于验证列表、详情、搜索和出站行为。",
+          "controls": "WASD：移动\n鼠标：瞄准\n空格：跳跃"
+        }
+      }
+    }
+  ]
+}

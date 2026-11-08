@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+/* Design tokens — DESIGN.md §2. Light values on :root, dark via media query.
+   Tailwind utilities are generated from the same names via @theme inline. */
+:root {
+  --paper: #f5f1e8;
+  --surface: #fbf9f4;
+  --surface-sunk: #ede8dc;
+  --ink: #1b1a17;
+  --ink-muted: #6b665c;
+  --hairline: #e3ddd0;
+  --trail: #ff5b1f;
+  --trail-ink: #1b1a17;
+  --moss: #2f6b4f;
+  --signal: #c8361d;
+  --amber: #b7791f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #13120e;
+    --surface: #1c1a15;
+    --surface-sunk: #0e0d0a;
+    --ink: #f2ede2;
+    --ink-muted: #a39c8e;
+    --hairline: #2e2b24;
+    --trail: #ff6a33;
+    --trail-ink: #13120e;
+    --moss: #5faf87;
+    --signal: #ff7a63;
+    --amber: #e3a94b;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-sunk: var(--surface-sunk);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-hairline: var(--hairline);
+  --color-trail: var(--trail);
+  --color-trail-ink: var(--trail-ink);
+  --color-moss: var(--moss);
+  --color-signal: var(--signal);
+  --color-amber: var(--amber);
+}
+
+@theme {
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --radius-card: 16px;
+  --radius-cover: 12px;
+  --radius-input: 12px;
+  --radius-cta: 14px;
+}
+
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--trail);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--trail);
+    color: var(--trail-ink);
+  }
+}
+
+@layer components {
+  /* "Field notes" label type: mono, uppercase, wide tracking (DESIGN §2.3). */
+  .label-mono {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .label-mono-sm {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* The single allowed card hover shadow (DESIGN §2.4). */
+  .card-hover {
+    transition:
+      transform 180ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      box-shadow 180ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 32px -18px rgb(27 26 23 / 0.35);
+  }
+
+  /* Big outlined position numbers on the hot snapshot. */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--ink);
+  }
+
+
+  /* Ticket stub with half-circle notches (DESIGN §3.3). */
+  .ticket-stub {
+    mask:
+      radial-gradient(8px at left center, transparent 98%, black) left center / 51% 100% no-repeat,
+      radial-gradient(8px at right center, transparent 98%, black) right center / 51% 100% no-repeat;
+  }
+
+  /* Trail dash animation, played once when scrolled into view. */
+  .trail-dash-anim {
+    stroke-dashoffset: 90;
+  }
+  .trail-in-view .trail-dash-anim {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  /* Cover contour parallax on hover (DESIGN §2.4). */
+  .group:hover .cover-contours {
+    transform: translate(6px, -2px);
+  }
+  .cover-contours {
+    transition: transform 180ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "site": {
+    "name": "PlayTrail",
+    "zhName": "游引",
+    "description": "A field guide to hand-picked browser games. Honest notes, one click to play on CrazyGames.",
+    "defaultShareAlt": "PlayTrail — a field guide to browser games"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "searchSubmit": "Search",
+    "languageSwitcher": "Language",
+    "openFilters": "Open filters",
+    "closeFilters": "Close filters",
+    "close": "Close",
+    "clearFilter": "Remove filter {label}",
+    "prevPage": "Previous page",
+    "nextPage": "Next page",
+    "pageStatus": "Page {page} of {totalPages}",
+    "position": "Position {position}",
+    "coverFallback": "Generated cover for {name}"
+  },
+  "header": {
+    "searchPlaceholder": "Search games…",
+    "allGames": "All games",
+    "categoriesLabel": "Categories"
+  },
+  "home": {
+    "eyebrow": "A field guide to browser games",
+    "title": "Find the next game you can’t put down.",
+    "subtitle": "Hand-picked browser games, honest notes, one click to play on CrazyGames.",
+    "searchPlaceholder": "Search games…",
+    "statsGames": "{count} games",
+    "statsCategories": "{count} categories",
+    "statsUpdated": "Updated {date}",
+    "todayTrail": "Today’s trail",
+    "viewDetail": "View details",
+    "hotSnapshot": "CrazyGames hot snapshot",
+    "hotViewAll": "See the full snapshot",
+    "browseByCategory": "Browse by category",
+    "gamesCount": "{count} games"
+  },
+  "card": {
+    "linkUnavailable": "Link unavailable"
+  },
+  "list": {
+    "title": "All games",
+    "resultCount": "{count, plural, one {# game} other {# games}}",
+    "filters": "Filters",
+    "category": "Category",
+    "tag": "Tag",
+    "clearAll": "Clear all",
+    "clearFilters": "Clear filters",
+    "sort": "Sort",
+    "sortEditorial": "Editorial order",
+    "sortNewest": "Recently added",
+    "searchPlaceholder": "Search games…",
+    "activeFilters": "Active filters",
+    "applyFilters": "Apply filters"
+  },
+  "hot": {
+    "title": "CrazyGames Hot Snapshot",
+    "definition": "This is what the CrazyGames hot page showed at collection time: games rising in popularity over the past 24 hours. Positions are a single observed moment, not an all-time player ranking.",
+    "collected": "Collected {time}",
+    "region": "Region {region}",
+    "definitionShort": "Past 24h rising",
+    "staleBanner": "Historical snapshot — not updated for more than 48 hours.",
+    "empty": {
+      "title": "No snapshot right now",
+      "body": "We only show a hot list when we have a verified, recent snapshot. Nothing here is made up. In the meantime, the full catalog is a good place to wander."
+    }
+  },
+  "detail": {
+    "breadcrumbHome": "Home",
+    "playCta": "Play on CrazyGames",
+    "ctaDisabled": "External link unavailable",
+    "ctaDisclosure": "Opens an external site in a new tab. Game content, ads and availability are provided by that platform.",
+    "backToList": "Back to all games",
+    "related": "Related games",
+    "intro": "About",
+    "controls": "Controls",
+    "controlsPending": "Controls not yet verified",
+    "screenshots": "Screenshots",
+    "externalUnavailable": "This game’s external link is currently unavailable, so the play button is switched off. Everything else on the page is unchanged — you can still browse the notes and find related games.",
+    "deviceUnknown": "Device support unconfirmed",
+    "fields": {
+      "developer": "Developer",
+      "devices": "Devices",
+      "deviceDesktop": "Desktop",
+      "deviceMobile": "Mobile",
+      "deviceBoth": "Desktop & mobile",
+      "deviceUnknown": "Unconfirmed",
+      "sourceAndVerified": "Source & verified",
+      "verifiedOn": "Verified {date}",
+      "unverified": "Unverified",
+      "firstCollected": "First collected",
+      "externalPlatform": "External platform",
+      "category": "Category"
+    }
+  },
+  "empty": {
+    "noResultsTitle": "No games on this trail",
+    "noResultsBody": "Nothing matches the current combination of filters.",
+    "clearFilters": "Clear filters",
+    "backHome": "Back to home",
+    "browseAll": "Browse all games",
+    "notFoundTitle": "This trail ends here",
+    "notFoundBody": "The page you were looking for doesn’t exist or has moved.",
+    "goneTitle": "This game has left the trail",
+    "goneBody": "It was removed from PlayTrail and is no longer listed here.",
+    "errorTitle": "This list didn’t load",
+    "errorBody": "Something went wrong on our side. Nothing is being faked here — try again.",
+    "retry": "Retry"
+  },
+  "pagination": {
+    "label": "Pagination"
+  },
+  "footer": {
+    "tagline": "An independent field guide to browser games.",
+    "site": "Site",
+    "language": "Language",
+    "about": "About",
+    "privacy": "Privacy",
+    "copyright": "Copyright & corrections",
+    "disclaimer": "PlayTrail is an independent curated discovery site with no confirmed official affiliation with CrazyGames. Game content, ads and availability are provided by CrazyGames."
+  },
+  "meta": {
+    "home": {
+      "title": "PlayTrail — A field guide to browser games",
+      "description": "A field guide to hand-picked browser games. Honest notes, verified sources, one click to play on CrazyGames."
+    },
+    "games": {
+      "title": "All games — PlayTrail"
+    },
+    "game": {
+      "title": "{name} — PlayTrail"
+    },
+    "category": {
+      "title": "{category} games — PlayTrail",
+      "description": "{category} games, hand-picked and annotated by PlayTrail."
+    },
+    "hot": {
+      "title": "CrazyGames Hot Snapshot — PlayTrail"
+    },
+    "about": {
+      "title": "About — PlayTrail"
+    },
+    "privacy": {
+      "title": "Privacy — PlayTrail"
+    },
+    "copyright": {
+      "title": "Copyright & corrections — PlayTrail"
+    }
+  },
+  "about": {
+    "eyebrow": "About this guide",
+    "title": "A field guide, not another neon arcade",
+    "p1": "PlayTrail is an independent, curated discovery site for browser games. We walk the catalog of browser games the way a trail guide walks a mountain range: slowly, taking notes, and pointing you to the real thing. Games themselves run on external platforms — chiefly CrazyGames — and one click from a game’s page takes you there.",
+    "h2How": "How this guide is made",
+    "p2": "Every listing is written by a human editor: an original one-line summary, an original description, and only facts we can verify. Where something is unverified — controls, device support — the page says so instead of guessing. Sources and the date each entry was verified are shown on every game page.",
+    "p3": "Games are organized into a fixed set of main categories, plus free-form gameplay tags. Featured placements on the home page are editorial choices; the hot snapshot is a labeled capture of an external chart, with its collection time and region attached.",
+    "h2Independence": "Independence",
+    "p4": "PlayTrail has no confirmed official affiliation with CrazyGames and is not the official site of any platform. Game content, ads and availability are provided by the external platform. We don’t host games, sell placements, or accept payment for listings.",
+    "h2Contact": "Contact",
+    "p5": "Corrections and feedback are welcome through the channels on the copyright page.",
+    "pending": "Pending owner confirmation"
+  },
+  "privacy": {
+    "eyebrow": "Privacy",
+    "title": "What we collect, and what we don’t",
+    "p1": "PlayTrail works without accounts, without cookies, and without cross-site tracking. This page describes the few things that are measured and how long they are kept.",
+    "h2Events": "Product events",
+    "p2": "When you browse a game page or click a link to an external platform, the site may record one of three events: a game-page view, an outbound click, or a related-games click. Each event contains a random event id, the event type, which game, which page type, the page path, the interface language, a timestamp, and the in-site context of the click (for example, whether you arrived from the home page or from a related-games card). No account, device identifier, IP address, full referrer URL, or search terms are attached.",
+    "p3": "These counts are used only in aggregate (for example, a click-through rate per game) and are retained for a limited period: raw events are deleted after 30 days, daily aggregates after 90 days.",
+    "h2Cookies": "Cookies and storage",
+    "p4": "The site sets no cookies for visitors. To understand whether you came from the home page, a category, or a related card, a single temporary value may be kept in your browser’s sessionStorage during the current tab session and is deleted as soon as it is read. It is not persisted and not shared.",
+    "h2Respect": "Do Not Track and Global Privacy Control",
+    "p5": "If your browser sends a Do Not Track signal or the Global Privacy Control signal, PlayTrail stops sending product events entirely. Pages and outbound links keep working normally.",
+    "h2Logs": "Server logs",
+    "p6": "The hosting infrastructure keeps standard server logs, which may include IP addresses, for security and abuse prevention. Logs are kept for at most 30 days and are not combined with product events.",
+    "h2Contact": "Questions",
+    "p7": "If you have questions about this policy, use the contact channel on the copyright page.",
+    "pending": "Pending owner confirmation"
+  },
+  "copyright": {
+    "eyebrow": "Copyright & corrections",
+    "title": "Corrections, takedowns and ownership",
+    "p1": "PlayTrail catalogs games that run on external platforms. We write our own summaries, generate our own cover artwork for games without licensed images, and never republish third-party descriptions, screenshots or artwork.",
+    "h2Corrections": "Report a correction",
+    "p2": "If a fact on a game page is wrong — the developer, controls, device support, or the link itself — tell us and we will verify and fix it. Report broken links too: a game whose external page has disappeared is switched to “link unavailable” rather than silently removed.",
+    "h2Rights": "Rights holders",
+    "p3": "If you own a game listed here and want the listing changed or removed, or if you believe an image or text on this site infringes your rights, contact us with the game name, the page address, and a short description of the issue. We respond to every request.",
+    "h2Trademarks": "Trademarks",
+    "p4": "Game names are trademarks of their respective owners and are used here for identification only. PlayTrail is not affiliated with CrazyGames; CrazyGames is a trademark of its respective owner.",
+    "pending": "Pending owner confirmation",
+    "contactPending": "The concrete contact channel (email or form) is provided by the site owner and will be published here before launch. No placeholder address is shown on purpose."
+  }
+}

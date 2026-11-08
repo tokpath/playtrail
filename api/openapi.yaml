@@ -1,0 +1,2150 @@
+openapi: 3.1.0
+info:
+  title: PlayTrail API
+  version: 1.0.0
+  description: >-
+    Backend API for PlayTrail, a multilingual browser-game discovery site.
+    Mirrors docs/ARCHITECTURE.md section 6 exactly. All paths are prefixed
+    with /api. Public endpoints require a `locale` in SUPPORTED_LOCALES.
+    JSON fields are camelCase; times are RFC 3339 with offset.
+servers:
+  - url: http://localhost:3000
+    description: Local development (Next.js rewrites /api/* to Go)
+tags:
+  - name: public
+  - name: admin
+security: []
+
+paths:
+  /api/meta:
+    get:
+      tags: [public]
+      summary: Supported and live locales
+      operationId: getMeta
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [supportedLocales, liveLocales, defaultLocale]
+                properties:
+                  supportedLocales: { type: array, items: { $ref: '#/components/schemas/Locale' } }
+                  liveLocales: { type: array, items: { $ref: '#/components/schemas/Locale' } }
+                  defaultLocale: { $ref: '#/components/schemas/Locale' }
+
+  /api/home:
+    get:
+      tags: [public]
+      summary: Homepage aggregation
+      operationId: getHome
+      parameters:
+        - { $ref: '#/components/parameters/Locale' }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [featured, hot, categories, totalGames]
+                properties:
+                  featured: { type: array, maxItems: 12, items: { $ref: '#/components/schemas/GameCard' } }
+                  hot: { oneOf: [{ $ref: '#/components/schemas/HotSnapshot' }, { type: 'null' }] }
+                  categories: { type: array, items: { $ref: '#/components/schemas/CategoryCount' } }
+                  totalGames: { type: integer, minimum: 0 }
+                  updatedAt: { type: [string, 'null'], format: date-time, description: Latest published_at among live games in the locale. }
+        '400': { $ref: '#/components/responses/Error400' }
+
+  /api/games:
+    get:
+      tags: [public]
+      summary: Search and list published games
+      operationId: listGames
+      parameters:
+        - { $ref: '#/components/parameters/Locale' }
+        - name: q
+          in: query
+          schema: { type: string, maxLength: 80 }
+          description: Literal substring match on the locale's search text. Trimmed; empty means no keyword.
+        - name: category
+          in: query
+          schema: { type: string }
+          description: Category slug; unknown slug is a 400.
+        - name: tag
+          in: query
+          schema: { type: string }
+          description: Tag slug; unknown slug is a 400.
+        - name: sort
+          in: query
+          schema: { type: string, enum: [editorial, newest], default: editorial }
+        - name: page
+          in: query
+          schema: { type: integer, minimum: 1, default: 1 }
+        - name: pageSize
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 48, default: 24 }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/GameList' }
+        '400': { $ref: '#/components/responses/Error400' }
+
+  /api/games/{slug}:
+    get:
+      tags: [public]
+      summary: Published game detail in a locale
+      operationId: getGame
+      parameters:
+        - { $ref: '#/components/parameters/Locale' }
+        - name: slug
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/GameDetail' }
+        '404': { $ref: '#/components/responses/Error404' }
+        '410': { $ref: '#/components/responses/Error410' }
+
+  /api/categories:
+    get:
+      tags: [public]
+      summary: Categories with published games in this locale
+      operationId: listCategories
+      parameters:
+        - { $ref: '#/components/parameters/Locale' }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items: { type: array, items: { $ref: '#/components/schemas/CategoryCount' } }
+        '400': { $ref: '#/components/responses/Error400' }
+
+  /api/categories/{slug}:
+    get:
+      tags: [public]
+      summary: One category with its published count in this locale
+      operationId: getCategory
+      parameters:
+        - { $ref: '#/components/parameters/Locale' }
+        - name: slug
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [category]
+                properties:
+                  category: { $ref: '#/components/schemas/CategoryCount' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/tags:
+    get:
+      tags: [public]
+      summary: Tags with published games in this locale
+      operationId: listTags
+      parameters:
+        - { $ref: '#/components/parameters/Locale' }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items: { type: array, items: { $ref: '#/components/schemas/TagCount' } }
+        '400': { $ref: '#/components/responses/Error400' }
+
+  /api/hot:
+    get:
+      tags: [public]
+      summary: Latest active approved hot snapshot
+      operationId: getHot
+      parameters:
+        - { $ref: '#/components/parameters/Locale' }
+      responses:
+        '200':
+          description: OK. snapshot is null when there is no approved snapshot.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [snapshot]
+                properties:
+                  snapshot: { oneOf: [{ $ref: '#/components/schemas/HotSnapshot' }, { type: 'null' }] }
+        '400': { $ref: '#/components/responses/Error400' }
+
+  /api/sitemap:
+    get:
+      tags: [public]
+      summary: Sitemap entries for published games and non-empty categories
+      operationId: getSitemap
+      parameters:
+        - { $ref: '#/components/parameters/Locale' }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [games, categories]
+                properties:
+                  games:
+                    type: array
+                    items:
+                      type: object
+                      required: [slug, updatedAt, locales]
+                      properties:
+                        slug: { type: string }
+                        updatedAt: { type: string, format: date-time }
+                        locales: { type: array, items: { $ref: '#/components/schemas/Locale' } }
+                  categories:
+                    type: array
+                    items:
+                      type: object
+                      required: [slug, locales]
+                      properties:
+                        slug: { type: string }
+                        locales: { type: array, items: { $ref: '#/components/schemas/Locale' } }
+        '400': { $ref: '#/components/responses/Error400' }
+
+  /api/unlisted-slugs:
+    get:
+      tags: [public]
+      summary: Slugs of unlisted games, for the web proxy's 410 rewrite
+      operationId: getUnlistedSlugs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [slugs]
+                properties:
+                  slugs: { type: array, items: { type: string } }
+
+  /api/events:
+    post:
+      tags: [public]
+      summary: Ingest an analytics event
+      operationId: postEvent
+      parameters:
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/EventInput' }
+      responses:
+        '202': { description: Accepted. The event is not guaranteed to be stored. }
+        '400': { $ref: '#/components/responses/Error400' }
+        '429': { $ref: '#/components/responses/Error429' }
+
+  /api/_test/clock:
+    post:
+      tags: [public]
+      summary: Set the test clock (e2e build tag only)
+      operationId: setTestClock
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [now]
+              properties:
+                now: { type: string, format: date-time }
+      responses:
+        '204': { description: Clock set }
+        '400': { $ref: '#/components/responses/Error400' }
+    delete:
+      tags: [public]
+      summary: Reset the test clock to wall time (e2e build tag only)
+      operationId: resetTestClock
+      responses:
+        '204': { description: Clock reset }
+
+  /api/admin/login:
+    post:
+      tags: [admin]
+      summary: Log in
+      operationId: adminLogin
+      parameters:
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string }
+      responses:
+        '204':
+          description: 'Logged in; session cookie set'
+        '401': { $ref: '#/components/responses/Error401' }
+        '429': { $ref: '#/components/responses/Error429' }
+
+  /api/admin/logout:
+    post:
+      tags: [admin]
+      summary: Log out
+      operationId: adminLogout
+      parameters:
+        - { $ref: '#/components/parameters/Origin' }
+      responses:
+        '204': { description: Logged out }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/me:
+    get:
+      tags: [admin]
+      summary: Current admin
+      operationId: adminMe
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [id, email]
+                properties:
+                  id: { type: string, format: uuid }
+                  email: { type: string, format: email }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/password:
+    post:
+      tags: [admin]
+      summary: Change password, revoking all sessions
+      operationId: adminChangePassword
+      parameters:
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [currentPassword, newPassword]
+              properties:
+                currentPassword: { type: string }
+                newPassword: { type: string, minLength: 12 }
+      responses:
+        '204':
+          description: 'Password changed; all sessions revoked'
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/dashboard:
+    get:
+      tags: [admin]
+      summary: Dashboard counters, live locales, crawler status, hot snapshot state
+      operationId: adminDashboard
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [counts, liveLocales, crawler, hot]
+                properties:
+                  counts:
+                    type: object
+                    required: [draft, published, unlisted, pendingReview, suspectLinks, sourceChangesPending]
+                    properties:
+                      draft: { type: integer }
+                      published: { type: integer }
+                      unlisted: { type: integer }
+                      pendingReview: { type: integer }
+                      suspectLinks: { type: integer }
+                      sourceChangesPending: { type: integer }
+                  liveLocales: { type: array, items: { $ref: '#/components/schemas/Locale' } }
+                  crawler: { $ref: '#/components/schemas/CrawlerStatus' }
+                  hot:
+                    oneOf:
+                      - type: object
+                        required: [sourceFetchedAt, stale]
+                        properties:
+                          sourceFetchedAt: { type: string, format: date-time }
+                          stale: { type: boolean }
+                      - type: 'null'
+
+  /api/admin/games:
+    get:
+      tags: [admin]
+      summary: Admin game list
+      operationId: adminListGames
+      parameters:
+        - name: status
+          in: query
+          schema: { type: string, enum: [draft, published, unlisted] }
+        - name: linkStatus
+          in: query
+          schema: { type: string, enum: [unchecked, valid, suspect, invalid] }
+        - name: review
+          in: query
+          schema: { type: string, enum: [needs_review, approved] }
+        - name: locale
+          in: query
+          schema: { $ref: '#/components/schemas/Locale' }
+        - name: q
+          in: query
+          schema: { type: string }
+        - name: page
+          in: query
+          schema: { type: integer, minimum: 1, default: 1 }
+        - name: pageSize
+          in: query
+          schema: { type: integer, minimum: 1, default: 24 }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminGameList' }
+        '401': { $ref: '#/components/responses/Error401' }
+    post:
+      tags: [admin]
+      summary: Create a draft game
+      operationId: adminCreateGame
+      parameters:
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, externalUrl, sourceUrl, sourceFetchedAt]
+              properties:
+                name: { type: string, minLength: 1, maxLength: 150 }
+                externalUrl: { type: string }
+                sourceUrl: { type: string }
+                sourceFetchedAt: { type: string, format: date-time }
+                slug: { type: string }
+                primaryCategory: { type: string }
+                tags: { type: array, maxItems: 8, items: { type: string } }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminGame' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/games/{id}:
+    get:
+      tags: [admin]
+      summary: Admin game detail
+      operationId: adminGetGame
+      parameters:
+        - { $ref: '#/components/parameters/GameID' }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminGame' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+    patch:
+      tags: [admin]
+      summary: Patch the draft revision of a game
+      operationId: adminPatchGame
+      parameters:
+        - { $ref: '#/components/parameters/GameID' }
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AdminGamePatch' }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminGame' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '409': { $ref: '#/components/responses/Error409' }
+        '422': { $ref: '#/components/responses/Error422' }
+
+  /api/admin/games/{id}/locales/{locale}/review:
+    post:
+      tags: [admin]
+      summary: Approve or reject one locale's content review
+      operationId: adminReviewLocale
+      parameters:
+        - { $ref: '#/components/parameters/GameID' }
+        - { $ref: '#/components/parameters/LocalePath' }
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [revisionVersion, decision, confirmOriginal, confirmFactsVerified]
+              properties:
+                revisionVersion: { type: integer }
+                decision: { type: string, enum: [approved, rejected] }
+                confirmOriginal: { type: boolean, enum: [true] }
+                confirmFactsVerified: { type: boolean, enum: [true] }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminGame' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '409': { $ref: '#/components/responses/Error409' }
+
+  /api/admin/games/{id}/link-check:
+    post:
+      tags: [admin]
+      summary: Record a manual link check result
+      operationId: adminLinkCheck
+      parameters:
+        - { $ref: '#/components/parameters/GameID' }
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status: { type: string, enum: [valid, suspect, invalid] }
+                note: { type: string }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminGame' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/games/{id}/gates:
+    get:
+      tags: [admin]
+      summary: Publish gate report
+      operationId: adminGates
+      parameters:
+        - { $ref: '#/components/parameters/GameID' }
+        - name: locales
+          in: query
+          schema: { type: string }
+          description: Comma-separated locales; defaults to the candidate revision's locales.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/GateReport' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/games/{id}/publish:
+    post:
+      tags: [admin]
+      summary: Publish the candidate revision to the requested locales
+      operationId: adminPublish
+      parameters:
+        - { $ref: '#/components/parameters/GameID' }
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [revisionVersion]
+              properties:
+                revisionVersion: { type: integer }
+                locales: { type: array, items: { $ref: '#/components/schemas/Locale' } }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminGame' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '409': { $ref: '#/components/responses/Error409' }
+        '422': { $ref: '#/components/responses/Error422' }
+
+  /api/admin/games/{id}/unlist:
+    post:
+      tags: [admin]
+      summary: Unlist a published game
+      operationId: adminUnlist
+      parameters:
+        - { $ref: '#/components/parameters/GameID' }
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [reason]
+              properties:
+                reason: { type: string, minLength: 1, maxLength: 500 }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminGame' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/games/{id}/outbound:
+    post:
+      tags: [admin]
+      summary: Enable or disable the outbound CTA
+      operationId: adminOutbound
+      parameters:
+        - { $ref: '#/components/parameters/GameID' }
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [enabled]
+              properties:
+                enabled: { type: boolean }
+                reason: { type: string }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminGame' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/games/{id}/preview:
+    get:
+      tags: [admin]
+      summary: Preview the draft (or last published) revision as GameDetail
+      operationId: adminPreview
+      parameters:
+        - { $ref: '#/components/parameters/GameID' }
+        - { $ref: '#/components/parameters/Locale' }
+      responses:
+        '200':
+          description: 'OK; response uses Cache-Control: no-store'
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/GameDetail' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/media:
+    post:
+      tags: [admin]
+      summary: Upload an image asset (JPEG/PNG/WebP, max 2 MB), re-encoded to WebP variants
+      operationId: adminUploadMedia
+      parameters:
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file: { type: string, format: binary }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/MediaAsset' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '413': { $ref: '#/components/responses/Error413' }
+        '415': { $ref: '#/components/responses/Error415' }
+
+  /api/admin/media/{id}:
+    get:
+      tags: [admin]
+      summary: Fetch one media asset (admin UI rights display)
+      operationId: adminGetMedia
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/MediaAsset' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+    patch:
+      tags: [admin]
+      summary: Update media rights and review state
+      operationId: adminPatchMedia
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rightsType: { type: string, enum: [original, licensed, unknown] }
+                rightsEvidenceRef: { type: string }
+                rightsNote: { type: string }
+                reviewState: { type: string, enum: [pending, approved, rejected] }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/MediaAsset' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/categories:
+    get:
+      tags: [admin]
+      summary: Full category dictionary
+      operationId: adminListCategories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items: { type: array, items: { $ref: '#/components/schemas/AdminCategory' } }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/categories/{slug}:
+    patch:
+      tags: [admin]
+      summary: Update a category's names or sort order
+      operationId: adminPatchCategory
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema: { type: string }
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                names: { $ref: '#/components/schemas/LocalizedNames' }
+                sortOrder: { type: integer, minimum: 0 }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items: { type: array, items: { $ref: '#/components/schemas/AdminCategory' } }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/tags:
+    get:
+      tags: [admin]
+      summary: Full tag dictionary
+      operationId: adminListTags
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items: { type: array, items: { $ref: '#/components/schemas/AdminTag' } }
+        '401': { $ref: '#/components/responses/Error401' }
+    post:
+      tags: [admin]
+      summary: Create a tag
+      operationId: adminCreateTag
+      parameters:
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [slug, names]
+              properties:
+                slug: { type: string }
+                names: { $ref: '#/components/schemas/LocalizedNames' }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminTag' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/tags/{slug}:
+    patch:
+      tags: [admin]
+      summary: Update a tag's names or active flag
+      operationId: adminPatchTag
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema: { type: string }
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                names: { $ref: '#/components/schemas/LocalizedNames' }
+                active: { type: boolean }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminTag' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/hot-snapshots:
+    get:
+      tags: [admin]
+      summary: Hot snapshot batches
+      operationId: adminListHotSnapshots
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items: { type: array, items: { $ref: '#/components/schemas/AdminHotSnapshot' } }
+        '401': { $ref: '#/components/responses/Error401' }
+    post:
+      tags: [admin]
+      summary: Create a hot snapshot batch
+      operationId: adminCreateHotSnapshot
+      parameters:
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [sourceUrl, sourceFetchedAt, observedRegion, definition, items]
+              properties:
+                sourceUrl: { type: string }
+                sourceFetchedAt: { type: string, format: date-time }
+                observedRegion: { type: string }
+                definition: { type: string }
+                cacheNote: { type: string }
+                items:
+                  type: array
+                  items:
+                    type: object
+                    required: [position, sourceSlug]
+                    properties:
+                      position: { type: integer, minimum: 1 }
+                      sourceSlug: { type: string }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminHotSnapshot' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/hot-snapshots/{id}/review:
+    post:
+      tags: [admin]
+      summary: Approve or reject a snapshot batch
+      operationId: adminReviewHotSnapshot
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [decision]
+              properties:
+                decision: { type: string, enum: [approved, rejected] }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminHotSnapshot' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/hot-snapshots/{id}/deactivate:
+    post:
+      tags: [admin]
+      summary: Deactivate a snapshot batch
+      operationId: adminDeactivateHotSnapshot
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+        - { $ref: '#/components/parameters/Origin' }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminHotSnapshot' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/imports/preview:
+    post:
+      tags: [admin]
+      summary: Validate a JSON import file and store a preview
+      operationId: adminImportPreview
+      parameters:
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ImportFile' }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ImportPreview' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '413': { $ref: '#/components/responses/Error413' }
+
+  /api/admin/imports/commit:
+    post:
+      tags: [admin]
+      summary: Commit a previewed import as drafts
+      operationId: adminImportCommit
+      parameters:
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [previewId, importKey]
+              properties:
+                previewId: { type: string, format: uuid }
+                importKey: { type: string, minLength: 1 }
+      responses:
+        '200':
+          description: OK. Reusing an importKey returns the original result (code IMPORT_KEY_REUSED).
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ImportResult' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+        '409': { $ref: '#/components/responses/Error409' }
+
+  /api/admin/imports/{id}:
+    get:
+      tags: [admin]
+      summary: Fetch an import job's result
+      operationId: adminGetImport
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ImportResult' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/stats:
+    get:
+      tags: [admin]
+      summary: Daily event stats in OPS_TIMEZONE
+      operationId: adminStats
+      parameters:
+        - name: from
+          in: query
+          required: true
+          schema: { type: string, pattern: '^\d{4}-\d{2}-\d{2}$' }
+        - name: to
+          in: query
+          required: true
+          schema: { type: string, pattern: '^\d{4}-\d{2}-\d{2}$' }
+        - name: gameId
+          in: query
+          schema: { type: string, format: uuid }
+        - name: locale
+          in: query
+          schema: { $ref: '#/components/schemas/Locale' }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/StatsReport' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/audit:
+    get:
+      tags: [admin]
+      summary: Audit log
+      operationId: adminAudit
+      parameters:
+        - name: page
+          in: query
+          schema: { type: integer, minimum: 1, default: 1 }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items, total, page, pageSize, totalPages]
+                properties:
+                  items: { type: array, items: { $ref: '#/components/schemas/AuditEntry' } }
+                  total: { type: integer }
+                  page: { type: integer }
+                  pageSize: { type: integer }
+                  totalPages: { type: integer }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/source-games:
+    get:
+      tags: [admin]
+      summary: Source catalog (crawler-owned; listed for contract completeness)
+      operationId: adminListSourceGames
+      parameters:
+        - name: q
+          in: query
+          schema: { type: string }
+        - name: category
+          in: query
+          schema: { type: string }
+        - name: mobile
+          in: query
+          schema: { type: boolean }
+        - name: collected
+          in: query
+          schema: { type: boolean }
+        - name: detail
+          in: query
+          schema: { type: string, enum: ['yes', 'no'] }
+        - name: page
+          in: query
+          schema: { type: integer, minimum: 1, default: 1 }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items, total, page]
+                properties:
+                  items: { type: array, items: { $ref: '#/components/schemas/SourceGameRow' } }
+                  total: { type: integer }
+                  page: { type: integer }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/source-games/{id}:
+    get:
+      tags: [admin]
+      summary: One source game with reference material (crawler-owned)
+      operationId: adminGetSourceGame
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SourceGame' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/source-games/{id}/collect:
+    post:
+      tags: [admin]
+      summary: Collect a source game into a draft (crawler-owned)
+      operationId: adminCollectSourceGame
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+        - { $ref: '#/components/parameters/Origin' }
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminGame' }
+        '401': { $ref: '#/components/responses/Error401' }
+        '404': { $ref: '#/components/responses/Error404' }
+
+  /api/admin/source-changes:
+    get:
+      tags: [admin]
+      summary: Detected source changes (crawler-owned)
+      operationId: adminListSourceChanges
+      parameters:
+        - name: state
+          in: query
+          schema: { type: string, enum: [pending, accepted, ignored] }
+        - name: page
+          in: query
+          schema: { type: integer, minimum: 1, default: 1 }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items, total, page]
+                properties:
+                  items: { type: array, items: { $ref: '#/components/schemas/SourceChange' } }
+                  total: { type: integer }
+                  page: { type: integer }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/source-changes/{id}/resolve:
+    post:
+      tags: [admin]
+      summary: Accept or ignore a source change (crawler-owned)
+      operationId: adminResolveSourceChange
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [action]
+              properties:
+                action: { type: string, enum: [accept, ignore] }
+                revisionVersion: { type: integer }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AdminGame' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/tag-mappings:
+    get:
+      tags: [admin]
+      summary: Source tag mappings (crawler-owned)
+      operationId: adminListTagMappings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      required: [sourceTagSlug]
+                      properties:
+                        sourceTagSlug: { type: string }
+                        tagSlug: { type: [string, 'null'] }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/tag-mappings/{sourceTagSlug}:
+    put:
+      tags: [admin]
+      summary: Set (or clear) a source tag mapping (crawler-owned)
+      operationId: adminPutTagMapping
+      parameters:
+        - name: sourceTagSlug
+          in: path
+          required: true
+          schema: { type: string }
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tagSlug]
+              properties:
+                tagSlug: { type: [string, 'null'] }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      required: [sourceTagSlug]
+                      properties:
+                        sourceTagSlug: { type: string }
+                        tagSlug: { type: [string, 'null'] }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/crawler:
+    get:
+      tags: [admin]
+      summary: Crawler status (crawler-owned)
+      operationId: adminGetCrawler
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CrawlerStatus' }
+        '401': { $ref: '#/components/responses/Error401' }
+    patch:
+      tags: [admin]
+      summary: Update crawler settings (crawler-owned)
+      operationId: adminPatchCrawler
+      parameters:
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled: { type: boolean }
+                dailyCap: { type: integer, minimum: 0 }
+                minIntervalMs: { type: integer, minimum: 2000 }
+                hotAutoPublish: { type: boolean }
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CrawlerStatus' }
+        '400': { $ref: '#/components/responses/Error400' }
+        '401': { $ref: '#/components/responses/Error401' }
+
+  /api/admin/crawler/run:
+    post:
+      tags: [admin]
+      summary: Trigger a crawler run (crawler-owned)
+      operationId: adminRunCrawler
+      parameters:
+        - { $ref: '#/components/parameters/Origin' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [task]
+              properties:
+                task: { type: string, enum: [sitemap, tracked, backfill, hot] }
+      responses:
+        '202': { description: Accepted }
+        '401': { $ref: '#/components/responses/Error401' }
+
+components:
+  parameters:
+    Locale:
+      name: locale
+      in: query
+      required: true
+      schema: { $ref: '#/components/schemas/Locale' }
+    LocalePath:
+      name: locale
+      in: path
+      required: true
+      schema: { $ref: '#/components/schemas/Locale' }
+    GameID:
+      name: id
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    Origin:
+      name: Origin
+      in: header
+      required: false
+      schema: { type: string }
+      description: Trusted origin (PUBLIC_BASE_URL) or same-origin; enforced by CSRF protection on writes.
+
+  responses:
+    Error400:
+      description: Bad request
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorBody' }
+    Error401:
+      description: Unauthenticated
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorBody' }
+    Error403:
+      description: Forbidden (CSRF or permissions)
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorBody' }
+    Error404:
+      description: Not found
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorBody' }
+    Error409:
+      description: Revision conflict
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorBody' }
+    Error410:
+      description: Gone (unlisted)
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorBody' }
+    Error413:
+      description: Payload too large
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorBody' }
+    Error415:
+      description: Unsupported media type
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorBody' }
+    Error422:
+      description: Validation or publish gate failure
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorBody' }
+    Error429:
+      description: Rate limited
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorBody' }
+
+  schemas:
+    Locale:
+      type: string
+      enum: [en, zh]
+
+    ErrorCode:
+      type: string
+      enum:
+        - INVALID_PARAM
+        - VALIDATION_FAILED
+        - UNAUTHENTICATED
+        - FORBIDDEN
+        - NOT_FOUND
+        - GONE
+        - REVISION_CONFLICT
+        - PAYLOAD_TOO_LARGE
+        - UNSUPPORTED_MEDIA_TYPE
+        - PUBLISH_GATE_FAILED
+        - RATE_LIMITED
+        - INTERNAL_ERROR
+
+    ErrorBody:
+      type: object
+      required: [code, message, requestId]
+      properties:
+        code: { $ref: '#/components/schemas/ErrorCode' }
+        message: { type: string }
+        fieldErrors:
+          type: object
+          additionalProperties: { type: string }
+        requestId: { type: string }
+
+    Ref:
+      type: object
+      required: [slug, name]
+      properties:
+        slug: { type: string }
+        name: { type: string }
+
+    Image:
+      type: object
+      required: [url, width, height, alt, srcset, source, shareUrl]
+      properties:
+        url: { type: string }
+        width: { type: integer }
+        height: { type: integer }
+        alt: { type: string }
+        srcset:
+          type: array
+          items:
+            type: object
+            required: [url, width]
+            properties:
+              url: { type: string }
+              width: { type: integer }
+        source: { type: string, enum: [self, crazygames], description: 'self: use no-referrer; crazygames: hotlinked CDN image (PRD 22.12).' }
+        shareUrl: { type: string, description: 1200x630 share image URL. }
+
+    GameCard:
+      type: object
+      required: [id, slug, name, alias, summary, primaryCategory, tags, cover, outboundAllowed]
+      properties:
+        id: { type: string, format: uuid }
+        slug: { type: string }
+        name: { type: string }
+        alias: { type: string }
+        summary: { type: string }
+        primaryCategory: { $ref: '#/components/schemas/Ref' }
+        tags:
+          type: array
+          maxItems: 3
+          items: { $ref: '#/components/schemas/Ref' }
+        cover:
+          oneOf:
+            - { $ref: '#/components/schemas/Image' }
+            - type: 'null'
+        outboundAllowed: { type: boolean }
+
+    GameDetail:
+      allOf:
+        - $ref: '#/components/schemas/GameCard'
+        - type: object
+          required:
+            - description
+            - controls
+            - developer
+            - deviceSupport
+            - deviceEvidence
+            - sourceUrl
+            - sourceFetchedAt
+            - screenshots
+            - ctaUrl
+            - outboundAllowed
+            - outboundBlockedReason
+            - availableLocales
+            - firstPublishedAt
+            - publishedAt
+            - related
+          properties:
+            tags:
+              type: array
+              maxItems: 8
+              items: { $ref: '#/components/schemas/Ref' }
+            description: { type: string }
+            controls: { type: string }
+            developer: { type: string }
+            deviceSupport: { type: string, enum: [unknown, desktop, mobile, both] }
+            deviceEvidence:
+              oneOf:
+                - type: object
+                  required: [url, checkedAt]
+                  properties:
+                    url: { type: string }
+                    checkedAt: { type: string, format: date-time }
+                - type: 'null'
+            sourceUrl: { type: string }
+            sourceFetchedAt: { type: string, format: date-time }
+            screenshots: { type: array, maxItems: 5, items: { $ref: '#/components/schemas/Image' } }
+            ctaUrl: { type: string }
+            outboundAllowed: { type: boolean }
+            outboundBlockedReason: { type: [string, 'null'], enum: [link_unavailable] }
+            availableLocales: { type: array, items: { $ref: '#/components/schemas/Locale' } }
+            firstPublishedAt: { type: string, format: date-time }
+            publishedAt: { type: string, format: date-time }
+            related: { type: array, maxItems: 6, items: { $ref: '#/components/schemas/GameCard' } }
+
+    GameList:
+      type: object
+      required: [items, total, page, pageSize, totalPages, appliedFilters]
+      properties:
+        items: { type: array, items: { $ref: '#/components/schemas/GameCard' } }
+        total: { type: integer, minimum: 0 }
+        page: { type: integer, minimum: 1 }
+        pageSize: { type: integer, minimum: 1, maximum: 48 }
+        totalPages: { type: integer, minimum: 0 }
+        appliedFilters:
+          type: object
+          required: [q, category, tag, sort]
+          properties:
+            q: { type: [string, 'null'] }
+            category: { type: [string, 'null'] }
+            tag: { type: [string, 'null'] }
+            sort: { type: string, enum: [editorial, newest] }
+
+    HotSnapshot:
+      type: object
+      required: [snapshotId, sourceUrl, sourceFetchedAt, observedRegion, definition, stale, items]
+      properties:
+        snapshotId: { type: string, format: uuid }
+        sourceUrl: { type: string }
+        sourceFetchedAt: { type: string, format: date-time }
+        observedRegion: { type: string }
+        definition: { type: string }
+        stale: { type: boolean }
+        items:
+          type: array
+          maxItems: 20
+          items:
+            type: object
+            required: [position, game]
+            properties:
+              position: { type: integer, minimum: 1 }
+              game: { $ref: '#/components/schemas/GameCard' }
+
+    CategoryCount:
+      allOf:
+        - $ref: '#/components/schemas/Ref'
+        - type: object
+          required: [count, sortOrder]
+          properties:
+            count: { type: integer, minimum: 0 }
+            sortOrder: { type: integer }
+
+    TagCount:
+      allOf:
+        - $ref: '#/components/schemas/Ref'
+        - type: object
+          required: [count]
+          properties:
+            count: { type: integer, minimum: 0 }
+
+    LocalizedNames:
+      type: object
+      additionalProperties: { type: string }
+
+    AdminCategory:
+      type: object
+      required: [slug, names, sourceUrl, sortOrder]
+      properties:
+        slug: { type: string }
+        names: { $ref: '#/components/schemas/LocalizedNames' }
+        sourceUrl: { type: string }
+        sortOrder: { type: integer }
+
+    AdminTag:
+      type: object
+      required: [slug, names, active, createdAt]
+      properties:
+        slug: { type: string }
+        names: { $ref: '#/components/schemas/LocalizedNames' }
+        active: { type: boolean }
+        createdAt: { type: string, format: date-time }
+
+    GateReport:
+      type: object
+      required: [game, locales]
+      properties:
+        game:
+          type: object
+          required: [ok, failures]
+          properties:
+            ok: { type: boolean }
+            failures:
+              type: array
+              items:
+                type: object
+                required: [field, message]
+                properties:
+                  field: { type: string }
+                  message: { type: string }
+        locales:
+          type: object
+          additionalProperties:
+            type: object
+            required: [ok, failures]
+            properties:
+              ok: { type: boolean }
+              failures:
+                type: array
+                items:
+                  type: object
+                  required: [field, message]
+                  properties:
+                    field: { type: string }
+                    message: { type: string }
+
+    AdminGame:
+      type: object
+      required:
+        - id
+        - slug
+        - platform
+        - externalUrl
+        - status
+        - statusReason
+        - linkStatus
+        - linkCheckedAt
+        - linkCheckMethod
+        - linkCheckNote
+        - outboundDisabled
+        - outboundDisabledReason
+        - featured
+        - editorialOrder
+        - revisionVersion
+        - firstPublishedAt
+        - createdAt
+        - updatedAt
+        - name
+        - developer
+        - primaryCategory
+        - tags
+        - deviceSupport
+        - deviceEvidenceUrl
+        - deviceCheckedAt
+        - sourceUrl
+        - sourceFetchedAt
+        - coverAssetId
+        - coverSourcePath
+        - screenshotAssetIds
+        - usePlaceholder
+        - materialReview
+        - locales
+        - hasPendingChanges
+        - gates
+        - source
+      properties:
+        id: { type: string, format: uuid }
+        slug: { type: string }
+        platform: { type: string, enum: [crazygames] }
+        externalUrl: { type: string }
+        status: { type: string, enum: [draft, published, unlisted] }
+        statusReason: { type: string }
+        linkStatus: { type: string, enum: [unchecked, valid, suspect, invalid] }
+        linkCheckedAt: { type: [string, 'null'], format: date-time,  }
+        linkCheckMethod: { type: string, enum: ['', manual, crawler] }
+        linkCheckNote: { type: string }
+        outboundDisabled: { type: boolean }
+        outboundDisabledReason: { type: string }
+        featured: { type: boolean }
+        editorialOrder: { type: integer, minimum: 0 }
+        revisionVersion: { type: integer }
+        firstPublishedAt: { type: [string, 'null'], format: date-time,  }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+        name: { type: string }
+        developer: { type: string }
+        primaryCategory: { type: [string, 'null'] }
+        tags: { type: array, maxItems: 8, items: { type: string } }
+        deviceSupport: { type: string, enum: [unknown, desktop, mobile, both] }
+        deviceEvidenceUrl: { type: string }
+        deviceCheckedAt: { type: [string, 'null'], format: date-time,  }
+        sourceUrl: { type: string }
+        sourceFetchedAt: { type: string, format: date-time }
+        coverAssetId: { type: [string, 'null'], format: uuid,  }
+        coverSourcePath: { type: string }
+        screenshotAssetIds: { type: array, maxItems: 5, items: { type: string, format: uuid } }
+        usePlaceholder: { type: boolean }
+        materialReview: { type: string, enum: [placeholder, pending, approved, rejected] }
+        locales:
+          type: object
+          additionalProperties: { $ref: '#/components/schemas/AdminGameLocale' }
+        hasPendingChanges: { type: boolean }
+        gates: { $ref: '#/components/schemas/GateReport' }
+        source:
+          oneOf:
+            - type: object
+              required: [sourceGameId, lastFetchedAt, lastFetchResult]
+              properties:
+                sourceGameId: { type: string, format: uuid }
+                lastFetchedAt: { type: [string, 'null'], format: date-time,  }
+                lastFetchResult: { type: string }
+            - type: 'null'
+
+    AdminGameLocale:
+      type: object
+      required:
+        - alias
+        - summary
+        - description
+        - controls
+        - mediaAlt
+        - contentReview
+        - translationMethod
+        - reviewedAt
+        - live
+        - liveRevisionId
+        - firstPublishedAt
+        - publishedAt
+      properties:
+        alias: { type: string }
+        summary: { type: string }
+        description: { type: string }
+        controls: { type: string }
+        mediaAlt:
+          type: object
+          additionalProperties: { type: string }
+        contentReview: { type: string, enum: [pending, approved, rejected] }
+        translationMethod: { type: string, enum: [original, human_translated, machine_assisted] }
+        reviewedAt: { type: [string, 'null'], format: date-time,  }
+        live: { type: boolean }
+        liveRevisionId: { type: [string, 'null'], format: uuid,  }
+        firstPublishedAt: { type: [string, 'null'], format: date-time,  }
+        publishedAt: { type: [string, 'null'], format: date-time,  }
+
+    AdminGamePatch:
+      type: object
+      required: [revisionVersion]
+      properties:
+        revisionVersion: { type: integer }
+        slug: { type: string }
+        externalUrl: { type: string }
+        name: { type: string, minLength: 1, maxLength: 150 }
+        developer: { type: string, maxLength: 150 }
+        primaryCategory: { type: string }
+        tags: { type: array, maxItems: 8, items: { type: string } }
+        deviceSupport: { type: string, enum: [unknown, desktop, mobile, both] }
+        deviceEvidenceUrl: { type: string }
+        deviceCheckedAt: { type: [string, 'null'], format: date-time,  }
+        sourceUrl: { type: string }
+        sourceFetchedAt: { type: string, format: date-time }
+        coverAssetId: { type: [string, 'null'], format: uuid, description: Explicit null clears the cover asset. }
+        coverSourcePath:
+          type: string
+          maxLength: 200
+          description: >-
+            CrazyGames CDN cover path (PRD 22.12); segments of [A-Za-z0-9_-],
+            no "..", empty string clears. Only affects the public cover; it
+            never changes materialReview or the publish gates.
+        screenshotAssetIds: { type: array, maxItems: 5, items: { type: string, format: uuid } }
+        usePlaceholder: { type: boolean }
+        materialReview: { type: string, enum: [placeholder, pending, approved, rejected] }
+        featured: { type: boolean }
+        editorialOrder: { type: integer, minimum: 0 }
+        locales:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              alias: { type: string, maxLength: 100 }
+              summary: { type: string }
+              description: { type: string }
+              controls: { type: string }
+              mediaAlt:
+                type: object
+                additionalProperties: { type: string }
+              translationMethod: { type: string, enum: [original, human_translated, machine_assisted] }
+
+    AdminGameRow:
+      type: object
+      required:
+        - id
+        - slug
+        - name
+        - status
+        - linkStatus
+        - outboundDisabled
+        - featured
+        - editorialOrder
+        - updatedAt
+        - sourceFetchedAt
+        - linkCheckedAt
+        - locales
+        - risks
+      properties:
+        id: { type: string, format: uuid }
+        slug: { type: string }
+        name: { type: string }
+        status: { type: string, enum: [draft, published, unlisted] }
+        linkStatus: { type: string, enum: [unchecked, valid, suspect, invalid] }
+        outboundDisabled: { type: boolean }
+        featured: { type: boolean }
+        editorialOrder: { type: integer }
+        updatedAt: { type: string, format: date-time }
+        sourceFetchedAt: { type: string, format: date-time }
+        linkCheckedAt: { type: [string, 'null'], format: date-time,  }
+        locales:
+          type: object
+          additionalProperties:
+            type: object
+            required: [contentReview, live]
+            properties:
+              contentReview: { type: string, enum: [pending, approved, rejected] }
+              live: { type: boolean }
+        risks: { type: array, items: { type: string } }
+
+    AdminGameList:
+      type: object
+      required: [items, total, page, pageSize, totalPages]
+      properties:
+        items: { type: array, items: { $ref: '#/components/schemas/AdminGameRow' } }
+        total: { type: integer }
+        page: { type: integer }
+        pageSize: { type: integer }
+        totalPages: { type: integer }
+
+    MediaAsset:
+      type: object
+      required: [id, sha256, width, height, variants, rightsType, rightsEvidenceRef, rightsNote, reviewState, createdAt]
+      properties:
+        id: { type: string, format: uuid }
+        sha256: { type: string }
+        width: { type: integer }
+        height: { type: integer }
+        variants:
+          type: array
+          items:
+            type: object
+            required: [width, path]
+            properties:
+              width: { type: integer }
+              path: { type: string }
+        rightsType: { type: string, enum: [original, licensed, unknown] }
+        rightsEvidenceRef: { type: string }
+        rightsNote: { type: string }
+        reviewState: { type: string, enum: [pending, approved, rejected] }
+        createdAt: { type: string, format: date-time }
+
+    AdminHotSnapshot:
+      type: object
+      required: [id, sourceUrl, sourceFetchedAt, cacheNote, definition, observedRegion, reviewState, active, createdBy, createdAt, items]
+      properties:
+        id: { type: string, format: uuid }
+        sourceUrl: { type: string }
+        sourceFetchedAt: { type: string, format: date-time }
+        cacheNote: { type: string }
+        definition: { type: string }
+        observedRegion: { type: string }
+        reviewState: { type: string, enum: [pending, approved, rejected] }
+        active: { type: boolean }
+        createdBy: { type: string }
+        createdAt: { type: string, format: date-time }
+        items:
+          type: array
+          items:
+            type: object
+            required: [position, sourceSlug]
+            properties:
+              position: { type: integer, minimum: 1 }
+              sourceSlug: { type: string }
+              gameId: { type: [string, 'null'], format: uuid,  }
+
+    ImportFile:
+      type: object
+      required: [schemaVersion, games]
+      properties:
+        schemaVersion: { type: integer, enum: [1] }
+        games:
+          type: array
+          maxItems: 200
+          items: { $ref: '#/components/schemas/ImportGameInput' }
+
+    ImportGameInput:
+      type: object
+      required: [name, primaryCategory, externalURL, sourceURL, sourceFetchedAt]
+      properties:
+        name: { type: string }
+        slug: { type: string }
+        primaryCategory: { type: string }
+        tags: { type: array, items: { type: string } }
+        externalURL: { type: string }
+        sourceURL: { type: string }
+        sourceFetchedAt: { type: string }
+        coverSourcePath:
+          type: string
+          maxLength: 200
+          description: CrazyGames CDN cover path (PRD 22.12); optional.
+        locales:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              alias: { type: string }
+              summary: { type: string }
+              description: { type: string }
+              controls: { type: string }
+
+    ImportRow:
+      type: object
+      required: [line, name, status]
+      properties:
+        line: { type: integer, minimum: 1 }
+        name: { type: string }
+        status: { type: string, enum: [created, duplicate, failed] }
+        gameId: { type: [string, 'null'], format: uuid,  }
+        errorCode: { type: [string, 'null'] }
+        message: { type: [string, 'null'] }
+
+    ImportSummary:
+      type: object
+      required: [total, created, duplicate, failed]
+      properties:
+        total: { type: integer }
+        created: { type: integer }
+        duplicate: { type: integer }
+        failed: { type: integer }
+
+    ImportPreview:
+      type: object
+      required: [previewId, rows, summary]
+      properties:
+        previewId: { type: string, format: uuid }
+        rows: { type: array, items: { $ref: '#/components/schemas/ImportRow' } }
+        summary: { $ref: '#/components/schemas/ImportSummary' }
+
+    ImportResult:
+      type: object
+      required: [jobId, rows, summary]
+      properties:
+        jobId: { type: string, format: uuid }
+        rows: { type: array, items: { $ref: '#/components/schemas/ImportRow' } }
+        summary: { $ref: '#/components/schemas/ImportSummary' }
+        code:
+          type: string
+          enum: [IMPORT_KEY_REUSED]
+          description: Present only when an existing importKey was resubmitted.
+
+    StatsReport:
+      type: object
+      required: [days, totals, byGame, notes]
+      properties:
+        days:
+          type: array
+          items:
+            type: object
+            required: [day, gameViews, outboundClicks, relatedClicks]
+            properties:
+              day: { type: string, format: date }
+              gameViews: { type: integer }
+              outboundClicks: { type: integer }
+              relatedClicks: { type: integer }
+        totals:
+          type: object
+          required: [gameViews, outboundClicks, relatedClicks, ctr]
+          properties:
+            gameViews: { type: integer }
+            outboundClicks: { type: integer }
+            relatedClicks: { type: integer }
+            ctr: { type: number }
+        byGame:
+          type: array
+          items:
+            type: object
+            required: [gameId, name, gameViews, outboundClicks, ctr]
+            properties:
+              gameId: { type: string, format: uuid }
+              name: { type: string }
+              gameViews: { type: integer }
+              outboundClicks: { type: integer }
+              ctr: { type: number }
+        notes: { type: string }
+
+    AuditEntry:
+      type: object
+      required: [id, actor, action, objectType, objectId, summary, at]
+      properties:
+        id: { type: integer }
+        adminId: { type: [string, 'null'], format: uuid,  }
+        actor: { type: string, enum: [admin, system, crawler, import] }
+        action: { type: string }
+        objectType: { type: string }
+        objectId: { type: string }
+        summary: { type: object }
+        at: { type: string, format: date-time }
+
+    SourceGameRow:
+      type: object
+      required: [id, slug, name, collected, hasDetail, firstSeenAt]
+      properties:
+        id: { type: string, format: uuid }
+        sourceId: { type: [string, 'null'] }
+        slug: { type: string }
+        name: { type: string }
+        categorySlug: { type: string }
+        developer: { type: string }
+        tags: { type: array, items: { type: string } }
+        deviceFlags: { type: object, additionalProperties: { type: boolean } }
+        isMultiplayer: { type: boolean }
+        mobile: { type: boolean }
+        collected: { type: boolean }
+        hasDetail: { type: boolean }
+        coverPath: { type: string }
+        gameId: { type: [string, 'null'], format: uuid }
+        lastFetchedAt: { type: [string, 'null'], format: date-time }
+        lastFetchResult: { type: string }
+        consecutiveFailDays: { type: integer }
+        addedOn: { type: [string, 'null'], format: date }
+        lastSignificantUpdatedOn: { type: [string, 'null'], format: date }
+        sourceStatus: { type: string }
+        rating: { type: [number, 'null'] }
+        upvotes: { type: [integer, 'null'] }
+        downvotes: { type: [integer, 'null'] }
+        localeUrls: { type: object, additionalProperties: { type: string } }
+        firstSeenAt: { type: string, format: date-time }
+        lastSeenInSitemapAt: { type: [string, 'null'], format: date-time }
+        sitemapMissingCount: { type: integer }
+
+    SourceGame:
+      allOf:
+        - $ref: '#/components/schemas/SourceGameRow'
+        - type: object
+          required: [reference]
+          properties:
+            reference: { type: object }
+            raw: { type: [object, 'null'] }
+
+    SourceChange:
+      type: object
+      required: [id, gameId, field, detectedAt, state]
+      properties:
+        id: { type: string, format: uuid }
+        gameId: { type: string, format: uuid }
+        gameSlug: { type: string }
+        field: { type: string }
+        oldValue: {}
+        newValue: {}
+        detectedAt: { type: string, format: date-time }
+        state: { type: string, enum: [pending, accepted, ignored] }
+        resolvedAt: { type: [string, 'null'], format: date-time }
+
+    SyncRun:
+      type: object
+      required: [id, task, startedAt, requests, statusCounts, stats, outcome, parserVersion]
+      properties:
+        id: { type: string, format: uuid }
+        task: { type: string, enum: [sitemap, tracked, backfill, hot] }
+        startedAt: { type: string, format: date-time }
+        finishedAt: { type: [string, 'null'], format: date-time,  }
+        requests: { type: integer }
+        statusCounts: { type: object }
+        stats: { type: object }
+        outcome: { type: string, enum: [running, ok, partial, aborted, failed] }
+        abortReason: { type: string }
+        parserVersion: { type: integer }
+
+    CrawlerStatus:
+      type: object
+      required: [enabledEnv, enabled, autoDisabled, autoDisabledReason, dailyCap, minIntervalMs, hotAutoPublish, quotaToday, runs]
+      properties:
+        enabledEnv: { type: boolean }
+        enabled: { type: boolean }
+        autoDisabled: { type: boolean }
+        autoDisabledReason: { type: string }
+        dailyCap: { type: integer }
+        minIntervalMs: { type: integer }
+        hotAutoPublish: { type: boolean }
+        quotaToday: { type: integer }
+        runs: { type: array, items: { $ref: '#/components/schemas/SyncRun' } }
+
+    EventInput:
+      type: object
+      required: [eventId, eventName, gameId, pageType, pagePath, locale, occurredAt, placement, entrySource]
+      properties:
+        eventId: { type: string, format: uuid }
+        eventName: { type: string, enum: [game_view, outbound_click, related_click] }
+        gameId: { type: string, format: uuid }
+        sourceGameId: { type: [string, 'null'], format: uuid,  }
+        pageType: { type: string, minLength: 1, maxLength: 100 }
+        pagePath: { type: string, minLength: 1, maxLength: 300 }
+        locale: { $ref: '#/components/schemas/Locale' }
+        occurredAt: { type: string, format: date-time }
+        placement: { type: string, enum: [detail_page, detail_primary, detail_related] }
+        entrySource:
+          type: string
+          enum: [home_featured, home_hot, category, search, related, direct_or_unknown]
