@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ApiError, getCategory, getGames, getSitemap, getTags } from "@/lib/api/server";
+import type { GameCard as GameCardData } from "@/lib/api/types";
 import { pageMetadata } from "@/lib/seo";
 import { CategoryBanner } from "@/components/game/CategoryBanner";
 import { GameCard } from "@/components/game/GameCard";
@@ -70,14 +71,21 @@ export default async function CategoryPage({
 
   let tags: Awaited<ReturnType<typeof getTags>>["items"] = [];
   let data: Awaited<ReturnType<typeof getGames>> | null = null;
+  let bannerGames: GameCardData[] = [];
   let failed = false;
   try {
-    const [tagData, gameData] = await Promise.all([
+    const [tagData, gameData, leading] = await Promise.all([
       getTags(locale).then((g) => g.items).catch(() => [] as typeof tags),
       getGames(locale, { ...filters, page }),
+      // The banner always shows the category's leading games, whatever the
+      // filters; unfiltered this is the same request as the list and dedupes.
+      getGames(locale, { q: null, category: slug, tag: null, sort: "editorial", page: 1 })
+        .then((g) => g.items)
+        .catch(() => [] as GameCardData[]),
     ]);
     tags = tagData;
     data = gameData;
+    bannerGames = leading;
   } catch {
     failed = true;
   }
@@ -94,7 +102,12 @@ export default async function CategoryPage({
 
   return (
     <div className="mx-auto max-w-[1240px] px-4 py-10 sm:px-6">
-      <CategoryBanner slug={slug} name={category?.name ?? slug} count={category?.count ?? 0} />
+      <CategoryBanner
+        slug={slug}
+        name={category?.name ?? slug}
+        count={category?.count ?? 0}
+        games={bannerGames}
+      />
 
       <div className="mt-10 grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-3">

@@ -5,7 +5,7 @@ import { getHome, getLiveLocales } from "@/lib/api/server";
 import { pageMetadata } from "@/lib/seo";
 import { GameCard } from "@/components/game/GameCard";
 import { GameCover } from "@/components/game/GameCover";
-import { TrailCover } from "@/components/game/TrailCover";
+import { CategoryCollage } from "@/components/game/CategoryCollage";
 import { StopMarker } from "@/components/ui/StopMarker";
 import { TrailLine } from "@/components/ui/TrailLine";
 import { ScrollRow } from "@/components/ui/ScrollRow";
@@ -190,8 +190,16 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 href={`/${locale}/categories/${category.slug}`}
                 className="card-hover group relative block aspect-[16/7] overflow-hidden rounded-card border border-hairline"
               >
-                <TrailCover slug={category.slug} category={category.slug} name={category.name} banner />
-                <span className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/40 to-transparent p-4">
+                <CategoryCollage
+                  slug={category.slug}
+                  // An API older than this field (deploy order, cached
+                  // responses) omits it; fall back to the topo art.
+                  games={category.leadingGames ?? []}
+                  max={3}
+                  fanClassName="right-[4%] top-1/2 h-[84%] w-[60%] -translate-y-1/2"
+                  sizes="(min-width: 640px) 180px, 150px"
+                />
+                <span className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between bg-gradient-to-t from-black/45 to-transparent p-4">
                   <span className="font-display text-[22px] font-semibold tracking-tight text-[#F5F1E8]">
                     {category.name}
                   </span>

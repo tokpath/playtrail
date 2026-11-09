@@ -52,7 +52,7 @@ paths:
                 properties:
                   featured: { type: array, maxItems: 12, items: { $ref: '#/components/schemas/GameCard' } }
                   hot: { oneOf: [{ $ref: '#/components/schemas/HotSnapshot' }, { type: 'null' }] }
-                  categories: { type: array, items: { $ref: '#/components/schemas/CategoryCount' } }
+                  categories: { type: array, items: { $ref: '#/components/schemas/HomeCategory' } }
                   totalGames: { type: integer, minimum: 0 }
                   updatedAt: { type: [string, 'null'], format: date-time, description: Latest published_at among live games in the locale. }
         '400': { $ref: '#/components/responses/Error400' }
@@ -1606,6 +1606,18 @@ components:
           properties:
             count: { type: integer, minimum: 0 }
             sortOrder: { type: integer }
+
+    HomeCategory:
+      allOf:
+        - $ref: '#/components/schemas/CategoryCount'
+        - type: object
+          required: [leadingGames]
+          properties:
+            leadingGames:
+              description: The category's first games that have cover art, in editorial order (for the home tile collage). Empty when none has a cover.
+              type: array
+              maxItems: 3
+              items: { $ref: '#/components/schemas/GameCard' }
 
     TagCount:
       allOf:

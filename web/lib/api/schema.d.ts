@@ -952,6 +952,10 @@ export interface components {
             count: number;
             sortOrder: number;
         };
+        HomeCategory: components["schemas"]["CategoryCount"] & {
+            /** @description The category's first games that have cover art, in editorial order (for the home tile collage). Empty when none has a cover. */
+            leadingGames: components["schemas"]["GameCard"][];
+        };
         TagCount: components["schemas"]["Ref"] & {
             count: number;
         };
@@ -1540,7 +1544,7 @@ export interface operations {
                     "application/json": {
                         featured: components["schemas"]["GameCard"][];
                         hot: components["schemas"]["HotSnapshot"] | null;
-                        categories: components["schemas"]["CategoryCount"][];
+                        categories: components["schemas"]["HomeCategory"][];
                         totalGames: number;
                         /**
                          * Format: date-time

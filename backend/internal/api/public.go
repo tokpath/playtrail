@@ -39,7 +39,7 @@ func (s *Server) getHome(w http.ResponseWriter, r *http.Request) {
 	if snapshot != nil && snapshot.Stale {
 		snapshot = nil // the home endpoint hides stale snapshots (§4.7)
 	}
-	categories, err := s.Catalog.CategoryCounts(r.Context(), locale)
+	categories, err := s.Catalog.HomeCategories(r.Context(), locale)
 	if err != nil {
 		httpx.WriteError(w, r, err)
 		return

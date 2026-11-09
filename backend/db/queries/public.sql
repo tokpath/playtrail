@@ -64,6 +64,22 @@ GROUP BY c.slug, c.names, c.sort_order
 HAVING count(pg.*) > 0
 ORDER BY c.sort_order, c.slug;
 
+-- name: ListCategoryLeadingGames :many
+-- The first @per_category games with cover art in each primary category, in
+-- editorial order; feeds the home page category collages.
+SELECT pg.* FROM public_games pg
+WHERE pg.locale = @locale
+  AND pg.game_id IN (
+    SELECT ranked.game_id FROM (
+      SELECT p.game_id,
+        row_number() OVER (PARTITION BY p.primary_category ORDER BY p.editorial_order, p.game_id) AS rn
+      FROM public_games p
+      WHERE p.locale = @locale AND coalesce(p.cover->>'url', '') <> ''
+    ) ranked
+    WHERE ranked.rn <= @per_category::int
+  )
+ORDER BY pg.primary_category, pg.editorial_order, pg.game_id;
+
 -- name: CategoryCount :many
 SELECT c.slug, c.names, c.sort_order, count(pg.*) AS count
 FROM categories c

@@ -250,6 +250,74 @@ func (q *Queries) LatestPublishedAt(ctx context.Context, locale string) (time.Ti
 	return updated_at, err
 }
 
+const listCategoryLeadingGames = `-- name: ListCategoryLeadingGames :many
+SELECT pg.game_id, pg.locale, pg.slug, pg.name, pg.alias, pg.summary, pg.description, pg.controls, pg.primary_category, pg.tags, pg.developer, pg.device_support, pg.device_evidence_url, pg.device_checked_at, pg.source_url, pg.source_fetched_at, pg.cover, pg.screenshots, pg.external_url, pg.outbound_allowed, pg.featured, pg.editorial_order, pg.first_published_at, pg.published_at, pg.search_text FROM public_games pg
+WHERE pg.locale = $1
+  AND pg.game_id IN (
+    SELECT ranked.game_id FROM (
+      SELECT p.game_id,
+        row_number() OVER (PARTITION BY p.primary_category ORDER BY p.editorial_order, p.game_id) AS rn
+      FROM public_games p
+      WHERE p.locale = $1 AND coalesce(p.cover->>'url', '') <> ''
+    ) ranked
+    WHERE ranked.rn <= $2::int
+  )
+ORDER BY pg.primary_category, pg.editorial_order, pg.game_id
+`
+
+type ListCategoryLeadingGamesParams struct {
+	Locale      string `json:"locale"`
+	PerCategory int32  `json:"per_category"`
+}
+
+// The first @per_category games with cover art in each primary category, in
+// editorial order; feeds the home page category collages.
+func (q *Queries) ListCategoryLeadingGames(ctx context.Context, arg ListCategoryLeadingGamesParams) ([]PublicGame, error) {
+	rows, err := q.db.Query(ctx, listCategoryLeadingGames, arg.Locale, arg.PerCategory)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []PublicGame
+	for rows.Next() {
+		var i PublicGame
+		if err := rows.Scan(
+			&i.GameID,
+			&i.Locale,
+			&i.Slug,
+			&i.Name,
+			&i.Alias,
+			&i.Summary,
+			&i.Description,
+			&i.Controls,
+			&i.PrimaryCategory,
+			&i.Tags,
+			&i.Developer,
+			&i.DeviceSupport,
+			&i.DeviceEvidenceUrl,
+			&i.DeviceCheckedAt,
+			&i.SourceUrl,
+			&i.SourceFetchedAt,
+			&i.Cover,
+			&i.Screenshots,
+			&i.ExternalUrl,
+			&i.OutboundAllowed,
+			&i.Featured,
+			&i.EditorialOrder,
+			&i.FirstPublishedAt,
+			&i.PublishedAt,
+			&i.SearchText,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const listFeaturedGames = `-- name: ListFeaturedGames :many
 SELECT game_id, locale, slug, name, alias, summary, description, controls, primary_category, tags, developer, device_support, device_evidence_url, device_checked_at, source_url, source_fetched_at, cover, screenshots, external_url, outbound_allowed, featured, editorial_order, first_published_at, published_at, search_text FROM public_games
 WHERE locale = $1 AND featured

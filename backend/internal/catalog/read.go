@@ -222,6 +222,42 @@ func (s *Service) CategoryCounts(ctx context.Context, locale string) ([]Category
 	return out, nil
 }
 
+// homeCategoryCovers is how many leading games each home category tile shows.
+const homeCategoryCovers = 3
+
+// HomeCategories is CategoryCounts plus each category's leading games with
+// cover art (editorial order, at most homeCategoryCovers), for the home tiles.
+func (s *Service) HomeCategories(ctx context.Context, locale string) ([]HomeCategory, error) {
+	counts, err := s.CategoryCounts(ctx, locale)
+	if err != nil {
+		return nil, err
+	}
+	rows, err := s.Q.ListCategoryLeadingGames(ctx, sqlc.ListCategoryLeadingGamesParams{
+		Locale: locale, PerCategory: homeCategoryCovers,
+	})
+	if err != nil {
+		return nil, err
+	}
+	cards, err := s.cardsOf(ctx, rows, locale, true)
+	if err != nil {
+		return nil, err
+	}
+	byCategory := make(map[string][]GameCard, len(counts))
+	for _, card := range cards {
+		slug := card.PrimaryCategory.Slug
+		byCategory[slug] = append(byCategory[slug], card)
+	}
+	out := make([]HomeCategory, 0, len(counts))
+	for _, c := range counts {
+		leading := byCategory[c.Slug]
+		if leading == nil {
+			leading = []GameCard{} // always an array in JSON
+		}
+		out = append(out, HomeCategory{CategoryCount: c, LeadingGames: leading})
+	}
+	return out, nil
+}
+
 // CategoryCountOf returns one category (count may be 0). Unknown slug → 404.
 func (s *Service) CategoryCountOf(ctx context.Context, locale, slug string) (*CategoryCount, error) {
 	if !s.IsSupported(locale) {
@@ -278,6 +314,12 @@ type CategoryCount struct {
 	Ref
 	Count     int `json:"count"`
 	SortOrder int `json:"sortOrder"`
+}
+
+// HomeCategory is a CategoryCount plus the games its home tile shows.
+type HomeCategory struct {
+	CategoryCount
+	LeadingGames []GameCard `json:"leadingGames"`
 }
 
 // TagCount is a Ref plus per-locale published count.
