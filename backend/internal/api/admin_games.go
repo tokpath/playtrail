@@ -14,8 +14,7 @@ import (
 
 // adminID returns the logged-in admin's UUID (requireAdmin has run).
 func (s *Server) adminID(r *http.Request) uuid.UUID {
-	admin, _ := s.Auth.CurrentAdmin(r.Context(), r)
-	return admin.ID
+	return authenticatedAdmin(r).ID
 }
 
 func (s *Server) gameID(r *http.Request) (uuid.UUID, error) {

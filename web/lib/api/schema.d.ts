@@ -881,7 +881,7 @@ export interface components {
             /** @description 1200x630 share image URL. */
             shareUrl: string;
         };
-        GameCard: {
+        GameSummary: {
             /** Format: uuid */
             id: string;
             slug: string;
@@ -893,7 +893,10 @@ export interface components {
             cover: components["schemas"]["Image"] | null;
             outboundAllowed: boolean;
         };
-        GameDetail: components["schemas"]["GameCard"] & {
+        GameCard: components["schemas"]["GameSummary"] & {
+            tags?: components["schemas"]["Ref"][];
+        };
+        GameDetail: components["schemas"]["GameSummary"] & {
             tags?: components["schemas"]["Ref"][];
             description: string;
             controls: string;

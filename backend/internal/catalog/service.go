@@ -29,10 +29,11 @@ type Service struct {
 	// Notify invalidates web cache tags after committed public changes (§7).
 	Notify func(tags ...string)
 
-	dictMu     sync.Mutex
-	dictCats   []sqlc.Category
-	dictTags   []sqlc.Tag
-	dictExpiry time.Time
+	dictMu    sync.Mutex
+	dictCats  []sqlc.Category
+	dictTags  []sqlc.Tag
+	catExpiry time.Time
+	tagExpiry time.Time
 
 	liveMu     sync.Mutex
 	liveCached []string
@@ -69,15 +70,15 @@ func (s *Service) IsSupported(locale string) bool {
 func (s *Service) Categories(ctx context.Context) ([]sqlc.Category, error) {
 	s.dictMu.Lock()
 	defer s.dictMu.Unlock()
-	if s.dictCats != nil && time.Now().Before(s.dictExpiry) {
+	if time.Now().Before(s.catExpiry) {
 		return s.dictCats, nil
 	}
 	cats, err := s.Q.ListCategories(ctx)
 	if err != nil {
 		return nil, err
 	}
-	s.dictCats, s.dictTags = cats, nil
-	s.dictExpiry = time.Now().Add(30 * time.Second)
+	s.dictCats = cats
+	s.catExpiry = time.Now().Add(30 * time.Second)
 	return cats, nil
 }
 
@@ -85,15 +86,15 @@ func (s *Service) Categories(ctx context.Context) ([]sqlc.Category, error) {
 func (s *Service) Tags(ctx context.Context) ([]sqlc.Tag, error) {
 	s.dictMu.Lock()
 	defer s.dictMu.Unlock()
-	if s.dictTags != nil && time.Now().Before(s.dictExpiry) {
+	if time.Now().Before(s.tagExpiry) {
 		return s.dictTags, nil
 	}
 	tags, err := s.Q.ListTags(ctx)
 	if err != nil {
 		return nil, err
 	}
-	s.dictCats, s.dictTags = nil, tags
-	s.dictExpiry = time.Now().Add(30 * time.Second)
+	s.dictTags = tags
+	s.tagExpiry = time.Now().Add(30 * time.Second)
 	return tags, nil
 }
 

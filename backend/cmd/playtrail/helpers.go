@@ -2,8 +2,10 @@ package main
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -31,18 +33,48 @@ func dbOpen(ctx context.Context, databaseURL string) (*pgxpool.Pool, error) {
 	return pool, nil
 }
 
-// acquireJobLock takes a session-level advisory lock keyed by job name so
-// concurrent workers never run the same job twice (TECH-STACK §3).
-func acquireJobLock(ctx context.Context, pool *pgxpool.Pool, name string) bool {
-	var ok bool
-	if err := pool.QueryRow(ctx, "SELECT pg_try_advisory_lock(hashtext($1))", name).Scan(&ok); err != nil {
-		return false
+// withJobLock owns a dedicated session until the job and lock cleanup finish.
+// Contention returns false, nil; database/cleanup failures return an error.
+func withJobLock(ctx context.Context, pool *pgxpool.Pool, name string, fn func()) (ran bool, err error) {
+	conn, err := pool.Acquire(ctx)
+	if err != nil {
+		return false, err
 	}
-	return ok
-}
-
-func releaseJobLock(ctx context.Context, pool *pgxpool.Pool, name string) {
-	_, _ = pool.Exec(ctx, "SELECT pg_advisory_unlock(hashtext($1))", name)
+	// Unless unlocking is confirmed, discard this session rather than putting
+	// a possibly locked connection back in the pool (including on cancellation).
+	clean := false
+	defer func() {
+		if clean {
+			conn.Release()
+		} else {
+			closeCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+			defer cancel()
+			_ = conn.Hijack().Close(closeCtx)
+		}
+	}()
+	var acquired bool
+	if err = conn.QueryRow(ctx, "SELECT pg_try_advisory_lock(hashtext($1))", name).Scan(&acquired); err != nil {
+		return false, err
+	}
+	if !acquired {
+		clean = true
+		return false, nil
+	}
+	defer func() {
+		cleanupCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+		var unlocked bool
+		unlockErr := conn.QueryRow(cleanupCtx, "SELECT pg_advisory_unlock(hashtext($1))", name).Scan(&unlocked)
+		clean = unlockErr == nil && unlocked
+		if !clean {
+			if unlockErr == nil {
+				unlockErr = fmt.Errorf("job lock %q was not held", name)
+			}
+			err = errors.Join(err, unlockErr)
+		}
+	}()
+	fn()
+	return true, nil
 }
 
 // cacheInvalidator builds the web cache notifier. Without INTERNAL_SECRET the

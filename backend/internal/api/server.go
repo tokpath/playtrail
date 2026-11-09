@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"log/slog"
 	"net"
 	"net/http"
@@ -15,6 +16,7 @@ import (
 	"playtrail/backend/internal/clock"
 	"playtrail/backend/internal/config"
 	"playtrail/backend/internal/crawler"
+	sqlc "playtrail/backend/internal/db/sqlc"
 	"playtrail/backend/internal/dict"
 	"playtrail/backend/internal/events"
 	"playtrail/backend/internal/hot"
@@ -127,6 +129,13 @@ func New(s *Server) (apiHandler http.Handler, mediaHandler http.Handler) {
 	return r, mediaFileHandler(s.Media.Dir)
 }
 
+type adminContextKey struct{}
+
+// authenticatedAdmin is only used inside the requireAdmin route group.
+func authenticatedAdmin(r *http.Request) *sqlc.GetAdminRow {
+	return r.Context().Value(adminContextKey{}).(*sqlc.GetAdminRow)
+}
+
 // requireAdmin rejects unauthenticated or stale sessions with 401.
 func (s *Server) requireAdmin(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -139,7 +148,8 @@ func (s *Server) requireAdmin(next http.Handler) http.Handler {
 			httpx.WriteError(w, r, httpx.Unauthenticated())
 			return
 		}
-		next.ServeHTTP(w, r)
+		ctx := context.WithValue(r.Context(), adminContextKey{}, admin)
+		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
 

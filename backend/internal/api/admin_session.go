@@ -72,11 +72,7 @@ func (s *Server) adminLogout(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) adminMe(w http.ResponseWriter, r *http.Request) {
-	admin, err := s.Auth.CurrentAdmin(r.Context(), r)
-	if err != nil {
-		httpx.WriteError(w, r, err)
-		return
-	}
+	admin := authenticatedAdmin(r)
 	httpx.JSON(w, http.StatusOK, map[string]any{"id": admin.ID, "email": admin.Email})
 }
 
@@ -92,11 +88,7 @@ func (s *Server) adminChangePassword(w http.ResponseWriter, r *http.Request) {
 		httpx.WriteError(w, r, err)
 		return
 	}
-	admin, err := s.Auth.CurrentAdmin(r.Context(), r)
-	if err != nil {
-		httpx.WriteError(w, r, err)
-		return
-	}
+	admin := authenticatedAdmin(r)
 	fields := map[string]string{}
 	if ok, err := auth.VerifyPassword(in.CurrentPassword, admin.PasswordHash); err != nil || !ok {
 		fields["currentPassword"] = "incorrect"

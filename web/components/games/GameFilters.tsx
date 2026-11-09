@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { useListNavigation } from "./useListNavigation";
 import { useTranslations } from "next-intl";
 import type { CategoryCount, TagCount } from "@/lib/api/types";
 import { categoryColors } from "@/lib/cover";
@@ -14,7 +14,6 @@ export type Filters = { q: string | null; category: string | null; tag: string |
  * undone with the browser back button (PRD §05).
  */
 export function GameFilters({
-  locale,
   categories,
   tags,
   current,
@@ -27,28 +26,9 @@ export function GameFilters({
   showCategory?: boolean;
 }) {
   const t = useTranslations("list");
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const { push, clear: clearAll } = useListNavigation(showCategory ? undefined : current.category ?? undefined);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const activeCount = [current.category, current.tag].filter(Boolean).length + (current.q ? 1 : 0);
-
-  const push = useCallback(
-    (patch: Partial<Filters>) => {
-      const params = new URLSearchParams(searchParams.toString());
-      for (const [key, value] of Object.entries(patch)) {
-        if (value == null || value === "") params.delete(key);
-        else params.set(key, value);
-      }
-      params.delete("page");
-      const query = params.toString();
-      router.push(`/${locale}/games${query ? `?${query}` : ""}`, { scroll: false });
-    },
-    [locale, router, searchParams],
-  );
-
-  const clearAll = () => {
-    router.push(`/${locale}/games`, { scroll: false });
-  };
+  const activeCount = [showCategory ? current.category : null, current.tag].filter(Boolean).length + (current.q ? 1 : 0);
 
   const rail = (
     <RailContents

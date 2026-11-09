@@ -70,11 +70,13 @@ func runWorker(ctx context.Context) error {
 		if clk.Now().Sub(last) < interval {
 			return last
 		}
-		if !acquireJobLock(ctx, pool, name) {
+		ran, err := withJobLock(ctx, pool, name, fn)
+		if err != nil {
+			log.Error("worker job lock failed", "job", name, "error", err)
+		}
+		if !ran || err != nil {
 			return last
 		}
-		defer releaseJobLock(ctx, pool, name)
-		fn()
 		return clk.Now()
 	}
 
@@ -100,20 +102,21 @@ func runWorker(ctx context.Context) error {
 	}
 	runCrawlRawCleanup := func() {
 		if lastRawCleanup.IsZero() || clk.Now().Sub(lastRawCleanup) >= rawCleanupInterval {
-			if !acquireJobLock(ctx, pool, "crawler_raw_cleanup") {
-				return
+			_, lockErr := withJobLock(ctx, pool, "crawler_raw_cleanup", func() {
+				now := clk.Now()
+				n, err := cat.Q.ClearExpiredSourceRaw(ctx, &now)
+				if err != nil {
+					log.Error("crawler raw cleanup failed", "error", err)
+					return
+				}
+				if n > 0 {
+					log.Info("crawler raw cleanup", "cleared", n)
+				}
+				lastRawCleanup = clk.Now()
+			})
+			if lockErr != nil {
+				log.Error("worker job lock failed", "job", "crawler_raw_cleanup", "error", lockErr)
 			}
-			defer releaseJobLock(ctx, pool, "crawler_raw_cleanup")
-			now := clk.Now()
-			n, err := cat.Q.ClearExpiredSourceRaw(ctx, &now)
-			if err != nil {
-				log.Error("crawler raw cleanup failed", "error", err)
-				return
-			}
-			if n > 0 {
-				log.Info("crawler raw cleanup", "cleared", n)
-			}
-			lastRawCleanup = clk.Now()
 		}
 	}
 

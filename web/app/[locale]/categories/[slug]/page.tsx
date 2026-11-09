@@ -122,7 +122,7 @@ export default async function CategoryPage({
           </div>
 
           <div className="mt-4">
-            <ListToolbar locale={locale} current={filters} />
+            <ListToolbar locale={locale} current={filters} fixedCategory={slug} />
           </div>
 
           {data ? (

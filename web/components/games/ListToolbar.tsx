@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useListNavigation } from "./useListNavigation";
 import { useTranslations } from "next-intl";
 import type { Filters } from "./GameFilters";
 
@@ -8,41 +8,41 @@ import type { Filters } from "./GameFilters";
  * List toolbar: search box + sort segmented control + active filter chips
  * (DESIGN §6.2). State lives in the URL.
  */
-export function ListToolbar({ locale, current }: { locale: string; current: Filters }) {
+export function ListToolbar({ current, fixedCategory }: { locale: string; current: Filters; fixedCategory?: string }) {
   const t = useTranslations("list");
   const tA11y = useTranslations("a11y");
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const push = (patch: Partial<Filters>) => {
-    const params = new URLSearchParams(searchParams.toString());
-    for (const [key, value] of Object.entries(patch)) {
-      if (value == null || value === "") params.delete(key);
-      else params.set(key, value);
-    }
-    params.delete("page");
-    const query = params.toString();
-    router.push(`/${locale}/games${query ? `?${query}` : ""}`, { scroll: false });
-  };
+  const { push, clear, pathname } = useListNavigation(fixedCategory);
 
   const removeParam = (key: string) => push({ [key]: null } as Partial<Filters>);
   const chips: { key: string; label: string }[] = [];
   if (current.q) chips.push({ key: "q", label: `“${current.q}”` });
-  if (current.category) chips.push({ key: "category", label: current.category });
+  if (current.category && !fixedCategory) chips.push({ key: "category", label: current.category });
   if (current.tag) chips.push({ key: "tag", label: current.tag });
 
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-wrap items-center gap-3">
-        <form action={`/${locale}/games`} role="search" className="min-w-0 flex-1 sm:max-w-[420px]">
+        <form
+          action={pathname}
+          role="search"
+          className="min-w-0 flex-1 sm:max-w-[420px]"
+          onSubmit={(event) => {
+            event.preventDefault();
+            push({ q: String(new FormData(event.currentTarget).get("q") ?? "").trim() });
+          }}
+        >
           <input
             type="search"
             name="q"
+            key={current.q ?? ""}
             defaultValue={current.q ?? ""}
             maxLength={80}
             placeholder={t("searchPlaceholder")}
             className="h-11 w-full rounded-input bg-surface-sunk px-4 text-[14px] text-ink placeholder:text-ink-muted"
           />
+          {!fixedCategory && current.category ? <input type="hidden" name="category" value={current.category} /> : null}
+          {current.tag ? <input type="hidden" name="tag" value={current.tag} /> : null}
+          {current.sort !== "editorial" ? <input type="hidden" name="sort" value={current.sort} /> : null}
           <button type="submit" className="sr-only">
             {tA11y("searchSubmit")}
           </button>
@@ -69,7 +69,7 @@ export function ListToolbar({ locale, current }: { locale: string; current: Filt
           ))}
           <button
             type="button"
-            onClick={() => router.push(`/${locale}/games`, { scroll: false })}
+            onClick={clear}
             className="label-mono-sm h-9 px-2 text-ink-muted underline-offset-4 hover:text-ink hover:underline"
           >
             {t("clearAll")}

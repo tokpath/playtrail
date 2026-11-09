@@ -1492,7 +1492,7 @@ components:
         source: { type: string, enum: [self, crazygames], description: 'self: use no-referrer; crazygames: hotlinked CDN image (PRD 22.12).' }
         shareUrl: { type: string, description: 1200x630 share image URL. }
 
-    GameCard:
+    GameSummary:
       type: object
       required: [id, slug, name, alias, summary, primaryCategory, tags, cover, outboundAllowed]
       properties:
@@ -1504,7 +1504,7 @@ components:
         primaryCategory: { $ref: '#/components/schemas/Ref' }
         tags:
           type: array
-          maxItems: 3
+          maxItems: 8
           items: { $ref: '#/components/schemas/Ref' }
         cover:
           oneOf:
@@ -1512,9 +1512,19 @@ components:
             - type: 'null'
         outboundAllowed: { type: boolean }
 
+    GameCard:
+      allOf:
+        - $ref: '#/components/schemas/GameSummary'
+        - type: object
+          properties:
+            tags:
+              type: array
+              maxItems: 3
+              items: { $ref: '#/components/schemas/Ref' }
+
     GameDetail:
       allOf:
-        - $ref: '#/components/schemas/GameCard'
+        - $ref: '#/components/schemas/GameSummary'
         - type: object
           required:
             - description
@@ -1554,7 +1564,7 @@ components:
             screenshots: { type: array, maxItems: 5, items: { $ref: '#/components/schemas/Image' } }
             ctaUrl: { type: string }
             outboundAllowed: { type: boolean }
-            outboundBlockedReason: { type: [string, 'null'], enum: [link_unavailable] }
+            outboundBlockedReason: { type: [string, 'null'], enum: [link_unavailable, null] }
             availableLocales: { type: array, items: { $ref: '#/components/schemas/Locale' } }
             firstPublishedAt: { type: string, format: date-time }
             publishedAt: { type: string, format: date-time }

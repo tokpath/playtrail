@@ -111,15 +111,12 @@ func Load(requireInternal bool) (*Config, error) {
 		SessionIdleTimeout: 30 * time.Minute,
 	}
 
-	if requireInternal {
-		secret, err := getRequired("INTERNAL_SECRET")
-		if err != nil {
-			return nil, err
-		}
-		if len(secret) < 32 {
-			return nil, fmt.Errorf("INTERNAL_SECRET must be at least 32 bytes")
-		}
-		cfg.InternalSecret = secret
+	cfg.InternalSecret = os.Getenv("INTERNAL_SECRET")
+	if requireInternal && cfg.InternalSecret == "" {
+		return nil, fmt.Errorf("missing required environment variable INTERNAL_SECRET")
+	}
+	if cfg.InternalSecret != "" && len(cfg.InternalSecret) < 32 {
+		return nil, fmt.Errorf("INTERNAL_SECRET must be at least 32 bytes")
 	}
 
 	tz, err := time.LoadLocation(get("OPS_TIMEZONE", "Asia/Taipei"))
