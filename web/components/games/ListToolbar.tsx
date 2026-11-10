@@ -3,12 +3,24 @@
 import { useListNavigation } from "./useListNavigation";
 import { useTranslations } from "next-intl";
 import type { Filters } from "./GameFilters";
+import type { CategoryCount, TagCount } from "@/lib/api/types";
 
 /**
  * List toolbar: search box + sort segmented control + active filter chips
  * (DESIGN §6.2). State lives in the URL.
  */
-export function ListToolbar({ current, fixedCategory }: { locale: string; current: Filters; fixedCategory?: string }) {
+export function ListToolbar({
+  current,
+  categories = [],
+  tags,
+  fixedCategory,
+}: {
+  locale: string;
+  current: Filters;
+  categories?: CategoryCount[];
+  tags: TagCount[];
+  fixedCategory?: string;
+}) {
   const t = useTranslations("list");
   const tA11y = useTranslations("a11y");
   const { push, clear, pathname } = useListNavigation(fixedCategory);
@@ -16,8 +28,15 @@ export function ListToolbar({ current, fixedCategory }: { locale: string; curren
   const removeParam = (key: string) => push({ [key]: null } as Partial<Filters>);
   const chips: { key: string; label: string }[] = [];
   if (current.q) chips.push({ key: "q", label: `“${current.q}”` });
-  if (current.category && !fixedCategory) chips.push({ key: "category", label: current.category });
-  if (current.tag) chips.push({ key: "tag", label: current.tag });
+  if (current.category && !fixedCategory) {
+    chips.push({
+      key: "category",
+      label: categories.find((category) => category.slug === current.category)?.name ?? current.category,
+    });
+  }
+  if (current.tag) {
+    chips.push({ key: "tag", label: tags.find((tag) => tag.slug === current.tag)?.name ?? current.tag });
+  }
 
   return (
     <div className="flex flex-col gap-3">

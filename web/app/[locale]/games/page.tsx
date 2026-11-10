@@ -91,7 +91,7 @@ export default async function GamesPage({ params, searchParams }: PageProps<"/[l
         </div>
 
         <div className="min-w-0 lg:col-span-9">
-          <ListToolbar locale={locale} current={filters} />
+          <ListToolbar locale={locale} current={filters} categories={categories} tags={tags} />
 
           {data ? (
             data.items.length > 0 ? (

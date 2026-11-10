@@ -1,5 +1,29 @@
 import { test, expect } from "@playwright/test";
 
+for (const { locale, label } of [
+  { locale: "zh", label: "经营管理" },
+  { locale: "en", label: "Management" },
+]) {
+  for (const path of ["categories/sim", "games"]) {
+    test(`E28 ${locale} ${path} active tag uses the localized filter name`, async ({ page }) => {
+      await page.goto(`/${locale}/${path}`);
+      if ((page.viewportSize()?.width ?? 1440) < 1024) {
+        await page.getByRole("button", { name: /Filters|筛选/ }).first().click();
+      }
+      await page.getByRole("button", { name: label, exact: true }).first().click();
+      await expect(page).toHaveURL(new RegExp(`/${locale}/${path}\\?tag=management$`));
+      const chip = page.locator('main button[aria-label]').filter({ hasText: label });
+      await expect(chip).toBeVisible();
+      await expect(chip).toHaveAccessibleName(new RegExp(label));
+      await page.reload();
+      await expect(chip).toBeVisible();
+      await chip.click();
+      await expect(page).toHaveURL(new RegExp(`/${locale}/${path}$`));
+      await expect(chip).toHaveCount(0);
+    });
+  }
+}
+
 // Exercise actual form submissions and controls, not synthetic URL changes.
 test("E28 category controls preserve path, filters and history", async ({ page }) => {
   await page.goto("/en/categories/io");
